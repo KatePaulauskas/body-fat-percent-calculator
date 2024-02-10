@@ -208,3 +208,16 @@ def validate_skinfolds_measurements(values):
 
 skinfold_measurements = get_skinfold_measurements()
 
+def store_date(date, user_name, user_gender, user_age, user_weight, skinfold_measurements):
+    """
+    Store the validated data in the Google sheet.
+    """
+    print("Updating measurements worksheet...\n")
+    measurements_sheet = SHEET.worksheet('measurements')
+    data_row = [date, user_name, user_gender, user_age, user_weight] + skinfold_measurements
+    measurements_sheet.append_row(data_row)
+    print("The date in the measurements worksheet updated successfully\n")
+
+store_date(date, user_name, user_gender, user_age, user_weight, skinfold_measurements)
+
+
