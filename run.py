@@ -21,7 +21,7 @@ def get_measurements_date():
 
     print('Welcome to Body Fat Percent Calculator')
     while True:
-        print('Enter the date measurements were taken in the following format DD/MM/YYYY')
+        print('Enter the date measurements were taken in the following format: DD/MM/YYYY')
 
         date_measurements_taken = input('Enter date here:\n')
 
@@ -103,3 +103,24 @@ def get_user_gender():
         return get_user_gender()
 
 user_gender = get_user_gender()
+
+def get_user_weight():
+    """
+    Request the user to input their weight and validate it.
+    Ensures that the input is a positive number, which can be a float.
+    """
+    while True:
+        print('Enter your weight in the followign format: 80.5')
+        user_weight = input("Enter your weight here (in kilograms): ")
+
+        try:
+            weight = float(user_weight)
+            if weight > 0:
+                print("Weight is valid!\n")
+                return weight
+            else:
+                print("Weight must be a positive number. Please enter a valid weight.")
+        except ValueError:
+            print("Invalid input. Please enter a numeric value for weight.")
+
+user_weight = get_user_weight()
