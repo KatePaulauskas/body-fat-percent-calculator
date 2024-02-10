@@ -85,3 +85,21 @@ def validate_user_name(name):
         return False
 
 user_name = get_user_name()
+
+def get_user_gender():
+    """
+    Request the user to input their gender
+    """
+
+    print('Enter your gender in the followign format: M or F')
+
+    user_gender = input('Enter your gender:\n')
+
+    if user_gender == 'M' or user_gender == 'F':
+        print('Gender is valid!\n')
+        return user_gender
+    else:
+        print('Invalid input. Please enter M or F')
+        return get_user_gender()
+
+user_gender = get_user_gender()
