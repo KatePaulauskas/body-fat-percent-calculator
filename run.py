@@ -16,7 +16,8 @@ SHEET = GSPREAD_CLIENT.open('body-fat-percent-calculator')
 
 def get_measurements_date():
     """
-    Request the user to input the date, when measurements were taken
+    Requests the user to input the date, when measurements were taken.
+    Runs a while loop to collect a valid date from the user via the terminal until the data is valid
     """
 
     print('Welcome to Body Fat Percent Calculator\n')
@@ -36,8 +37,8 @@ def get_measurements_date():
 
 def validate_date(value):
     """
-    Validate the date is entered in the correct format.
-    Raise ValueError if date is not entered in the correct format
+    Validates the date is entered in the correct format.
+    Raises ValueError if date is not entered in the correct format.
     Source: https://www.tutorialspoint.com/How-to-do-date-validation-in-Python
     """
 
@@ -56,7 +57,8 @@ date = get_measurements_date()
 
 def get_user_name():
     """
-    Request the user to input their name
+    Request the user to input their name.
+    Runs a while loop to collect a valid name from the user via the terminal until the name is valid.
     """
 
     while True:
@@ -74,8 +76,8 @@ def get_user_name():
 
 def validate_user_name(name):
     """
-    Validate user name entry contains only letters, hyphens, apostrophes, and spaces
-    Raise error message if the name was not entered in the required format
+    Validates user name entry contains only letters, hyphens, apostrophes, and spaces
+    Raises error message if the name was not entered in the required format
     Sources: https://stackoverflow.com/questions/28495822/best-way-to-validate-a-name-in-python, https://docs.python.org/3/howto/regex.html
     """
     pattern = r"^[a-zA-Z][a-zA-Z' -]+$"
@@ -89,7 +91,8 @@ user_name = get_user_name()
 
 def get_user_gender():
     """
-    Request the user to input their gender
+    Request the user to input their gender.
+    Runs a while loop to collect a valid gender from the user via the terminal until the gender is valid.
     """
 
     print('Enter your gender in the followign format: M or F.\n')
@@ -105,10 +108,33 @@ def get_user_gender():
 
 user_gender = get_user_gender()
 
+def get_user_age():
+    """
+    Requests the user to input their age and validates it.
+    Ensures that the input is a positive number.
+    Runs a while loop to collect a valid age from the user via the terminal until the age is valid.
+    """
+    while True:
+        print('Enter your age in numerical format.\n')
+        user_age = input("Enter your age here:\n")
+
+        try:
+            age = int(user_age)
+            if age > 0:
+                print("Age is valid!\n")
+                return age
+            else:
+                print("Age must be a positive number. Please enter a valid age.\n")
+        except ValueError:
+            print("Invalid input. Please enter a numeric value for age.\n")
+
+user_age = get_user_age()
+
 def get_user_weight():
     """
-    Request the user to input their weight and validate it.
+    Requests the user to input their weight and validates it.
     Ensures that the input is a positive number, which can be a float.
+    Runs a while loop to collect a valid weight from the user via the terminal until the weight is valid.
     """
     while True:
         print('Enter your weight in kilograms in the followign format: 80.5.\n')
@@ -128,11 +154,11 @@ user_weight = get_user_weight()
 
 def get_skinfold_measurements():
     """
-    Provides instructions on how the measurements should be taken
-    Requests the user to input the skinfold measurements.
+    Provides instructions on how the measurements should be taken.
+    Requests the user to input the skinfold measurements in the form 
+    of a string of 7 numbers separated by commas.
     Runs a while loop to collect a valid string of data from the user
-    via the terminal, which must be a string of 7 numbers separated
-    by commas. The loop will repeatedly request data, until it is valid.
+    via the terminal until the data is valid.
     """
     print('Equipment: Skinfold caliper.\n')
     print('Procedure:\n')
@@ -165,9 +191,9 @@ def get_skinfold_measurements():
 
 def validate_skinfolds_measurements(values):
     """
-    Validates that there are exactly 7 values and attempts to convert
-    all string values into integers. Raises ValueError if strings cannot
-    be converted into int, or if there aren't exactly 7 values.
+    Validates that there are exactly 7 numerical values and attempts to convert
+    all string values into floats. Raises ValueError if strings cannot
+    be converted into floats, or if there aren't exactly 7 values.
     """
     if len(values) != 7:
         print(f"Exactly 7 values required, you provided {len(values)}. Please try again.\n")
@@ -180,5 +206,5 @@ def validate_skinfolds_measurements(values):
 
     return True
 
+skinfold_measurements = get_skinfold_measurements()
 
-get_skinfold_measurements()
