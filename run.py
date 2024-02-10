@@ -25,7 +25,7 @@ def get_measurements_date():
         date_measurements_taken = input('Enter date here:\n')
 
         if validate_date(date_measurements_taken):
-            print('Date is valid!')
+            print('Date is valid!\n')
             # Exit the loop after validating the date
             break
 
@@ -51,3 +51,25 @@ def validate_date(value):
 
 
 date = get_measurements_date()
+
+def get_user_name():
+    """
+    Request the user to input their name
+    Raise error message if the name input was not in the text format
+    Source: https://stackoverflow.com/questions/28495822/best-way-to-validate-a-name-in-python
+    """
+
+    while True:
+        print('Enter your name in a text format')
+
+        user_name = input('Enter your name here:\n')
+
+        if user_name.isalpha():
+            print('Name is valid!\n')
+            return user_name
+        else:
+            print('Invalid input. Please enter text only.')
+
+
+user_name = get_user_name()
+
