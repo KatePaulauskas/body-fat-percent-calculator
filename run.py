@@ -111,8 +111,8 @@ def get_user_weight():
     Ensures that the input is a positive number, which can be a float.
     """
     while True:
-        print('Enter your weight in the followign format: 80.5.\n')
-        user_weight = input("Enter your weight here (in kilograms):\n")
+        print('Enter your weight in kilograms in the followign format: 80.5.\n')
+        user_weight = input("Enter your weight here:\n")
 
         try:
             weight = float(user_weight)
@@ -128,12 +128,14 @@ user_weight = get_user_weight()
 
 def get_skinfold_measurements():
     """
-    Provide instructions on how the measurements should be taken
-    Request the user to input the skinfold measurements.
+    Provides instructions on how the measurements should be taken
+    Requests the user to input the skinfold measurements.
+    Runs a while loop to collect a valid string of data from the user
+    via the terminal, which must be a string of 7 numbers separated
+    by commas. The loop will repeatedly request data, until it is valid.
     """
-    
     print('Equipment: Skinfold caliper.\n')
-    print('Procedure:')
+    print('Procedure:\n')
     print('Measurements are taken on the right side of body. Caliber needs to be perpendicular to the site analyzed.')
     print('The participant must relax the muscle group that is being assessed.')
     print('When skin fold is pinched, the practitioner should be taking reading at the middle of the pinched skin, not apex or base.')
@@ -146,9 +148,37 @@ def get_skinfold_measurements():
     print('Suprailiac: diagonal fold parallel and superior to the iliac crest.\n')
     print('Abdominal: vertical fold 2cm to the right of the navel.\n')
     print ('Thigh: midpoint of the anterior side of the upper leg between the patella and top of thigh.\n')
+    
+    while True:
+        print('Enter skinfold measurements in mm in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh.')
+        print('Data should be 7 numbers, separated by commas, numbers can have fractional parts. Example: 10.5,5,12,11.7,25,20,33\n')
 
-    print('Enter skinfold measurements in mm in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh.')
-    print('Data should be 7 numbers, separated by commas. Example: 10,5,12,11,25,20,33\n')
+        measurements_str = input("Enter your measurements here:\n")
 
-    measurements_str = input("Enter your measurements here:\n")
+        skinfolds_measurements = measurements_str.split(",")
+
+        if validate_skinfolds_measurements(skinfolds_measurements):
+            print("Data is valid!")
+            break
+    return skinfolds_measurements
+
+
+def validate_skinfolds_measurements(values):
+    """
+    Validates that there are exactly 7 values and attempts to convert
+    all string values into integers. Raises ValueError if strings cannot
+    be converted into int, or if there aren't exactly 7 values.
+    """
+    if len(values) != 7:
+        print(f"Exactly 7 values required, you provided {len(values)}. Please try again.\n")
+        return False
+    try:
+        converted_skinfolds_measurements = [float(value) for value in values]
+    except ValueError:
+        print("Invalid data: one or more entered values are not a number. Please try again.\n")
+        return False
+
+    return True
+
+
 get_skinfold_measurements()
