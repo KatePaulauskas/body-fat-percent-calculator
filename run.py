@@ -45,7 +45,16 @@ def validate_date(value):
     date_format = '%d/%m/%Y'
 
     try:
-        datetime.datetime.strptime(value, date_format)
+        entered_date = datetime.datetime.strptime(value, date_format)
+        current_date = datetime.datetime.now()
+        min_realistic_date = datetime.datetime.strptime("01/01/1900", date_format)
+        if entered_date > current_date:
+            print("The date cannot be in the future. Please try again.\n")
+            return False
+        elif entered_date < min_realistic_date:
+            print("The date is unrealistically old. Please enter a more recent date.\n")
+            return False
+
         return True
 
     except ValueError:
