@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import datetime
+import re
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -55,21 +56,32 @@ date = get_measurements_date()
 def get_user_name():
     """
     Request the user to input their name
-    Raise error message if the name input was not in the text format
-    Source: https://stackoverflow.com/questions/28495822/best-way-to-validate-a-name-in-python
     """
 
     while True:
-        print('Enter your name in a text format')
+        print('Enter your name. You can use letters, hyphens, apostrophes, and spaces (where appropriate)')
 
         user_name = input('Enter your name here:\n')
 
-        if user_name.isalpha():
+        if validate_user_name(user_name):
             print('Name is valid!\n')
-            return user_name
-        else:
-            print('Invalid input. Please enter text only.')
+            # Exit the loop after validatign the name
+            break
 
+    return user_name
+
+
+def validate_user_name(name):
+    """
+    Validate user name entry contains only letters, hyphens, apostrophes, and spaces
+    Raise error message if the name was not entered in the required format
+    Sources: https://stackoverflow.com/questions/28495822/best-way-to-validate-a-name-in-python, https://docs.python.org/3/howto/regex.html
+    """
+    pattern = r"^[a-zA-Z][a-zA-Z' -]+$"
+    if re.match(pattern, name):
+        return True
+    else:
+        print("Invalid name. Please ensure it contains only letters, hyphens, apostrophes, and spaces (where appropriate).")
+        return False
 
 user_name = get_user_name()
-
