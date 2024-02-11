@@ -231,7 +231,7 @@ user_inputs = store_data(date, user_name, user_gender, user_age, user_weight, sk
 
 def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     """
-    Perform body fat percent calculations based on the user's gender, age, and skinfold measurements
+    Performs body fat percent calculations based on the user's gender, age, and sum of skinfold measurements
     Usuing Jackson/Pollock 7-Site Caliper Method formula. 
     Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php#footnote-1
     """
@@ -247,5 +247,32 @@ def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     return round(body_fat_percent, 2)
 
 user_body_fat_percent = calculate_body_fat_percent(user_age, user_gender, skinfold_measurements)
-print(f"Your body fat percent is {user_body_fat_percent}")
+print(f'Your body fat percent is {user_body_fat_percent} %\n')
+
+def calculate_body_fat_weight(user_weight, user_body_fat_percent):
+    """
+    Calculates the body fat weight based on the weight user ptovided and the calculated  body fat percent
+    """
+    print('Calculating your body fat weight...\n')
+    body_fat_weight = (user_weight * user_body_fat_percent)/100
+
+    return round(body_fat_weight, 2)
+
+user_body_fat_weight = calculate_body_fat_weight(user_weight, user_body_fat_percent)
+print(f'Your body fat weight is {user_body_fat_weight} kg\n')
+
+def calculate_lean_body_weight(user_weight, user_body_fat_weight):
+    """
+    Calculates user's body lean mass based on the user's weight and body fat weight
+    """
+    print('Calculating your body lean mass...\n')
+    lean_body_weight = user_weight - user_body_fat_weight
+
+    return lean_body_weight
+
+user_lean_body_weight = calculate_lean_body_weight(user_weight, user_body_fat_weight)
+print(f'Your lean body mass is {user_lean_body_weight} kg')
+
+
+
 
