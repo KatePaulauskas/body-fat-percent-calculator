@@ -217,7 +217,7 @@ def validate_skinfolds_measurements(values):
 
 skinfold_measurements = get_skinfold_measurements()
 
-def store_date(date, user_name, user_gender, user_age, user_weight, skinfold_measurements):
+def store_data(date, user_name, user_gender, user_age, user_weight, skinfold_measurements):
     """
     Store the validated data in the Google sheet.
     """
@@ -227,6 +227,25 @@ def store_date(date, user_name, user_gender, user_age, user_weight, skinfold_mea
     measurements_sheet.append_row(data_row)
     print("The date in the measurements worksheet updated successfully\n")
 
-store_date(date, user_name, user_gender, user_age, user_weight, skinfold_measurements)
+user_inputs = store_data(date, user_name, user_gender, user_age, user_weight, skinfold_measurements)
 
+def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
+    """
+    Perform body fat percent calculations based on the user's gender, age, and skinfold measurements
+    Usuing Jackson/Pollock 7-Site Caliper Method formula. 
+    Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php#footnote-1
+    """
+    print('Calculating your body fat percent...\n')
+    skinfolds_sum = sum([float(measurement) for measurement in skinfold_measurements])
+    
+    if user_gender == 'M':
+        body_fat_percent = 495 / (1.112 - (0.00043499 * skinfolds_sum) + (0.00000055 * skinfolds_sum ** 2) - (0.00028826 * user_age)) - 450
+    
+    else:
+        body_fat_percent = 495 / (1.097 - (0.00046971 * skinfolds_sum) + (0.00000056 * skinfolds_sum ** 2) - (0.00012828 * user_age)) - 450
+
+    return round(body_fat_percent, 2)
+
+user_body_fat_percent = calculate_body_fat_percent(user_age, user_gender, skinfold_measurements)
+print(f"Your body fat percent is {user_body_fat_percent}")
 
