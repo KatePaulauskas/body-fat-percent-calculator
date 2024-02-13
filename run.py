@@ -208,7 +208,7 @@ def get_skinfold_measurements():
             "Data should be 7 numbers, separated by commas, numbers can have fractional parts. Example: 10.5,5,12,11.7,25,20,33\n"
         )
 
-        measurements_str = input("Enter your measurements here:\n")
+        measurements_str = input("Enter your skinfold measurements here in mm:\n")
 
         skinfolds_measurements = measurements_str.split(",")
 
@@ -226,15 +226,20 @@ def validate_skinfolds_measurements(values):
     """
     if len(values) != 7:
         print(
-            f"Exactly 7 values required, you provided {len(values)}. Please try again.\n"
+            f"Exactly 7 values of skinfold measurements required, you provided {len(values)}. Please try again.\n"
         )
         return False
     try:
         converted_skinfolds_measurements = [float(value) for value in values]
     except ValueError:
         print(
-            "Invalid data: one or more entered values are not a number. Please try again.\n"
+            "Invalid data: one or more skinfold measurements entered values are not a number. Please try again.\n"
         )
+        return False
+
+    # Check if any measurement value exceeds maximum possible skinfold size of 80 mm. Source: https://stackoverflow.com/questions/20211339/using-python-function-any-on-a-list-of-floats
+    if any(value > 80 for value in converted_skinfolds_measurements):
+        print("Invalid data: one or more skinfold measurements entered values exceeds 80 mm. Skinfold measurement cannot exceed 80 mm. Please retake your measurements and enter correct values.\n")
         return False
 
     return True
