@@ -333,29 +333,29 @@ def display_recommendations(user_gender, user_body_fat_percent):
             f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Essential Fat category. Maintain your current level of physical activity and healthy eating habits. Consult with a healthcare provider if you're significantly below this range, as too little body fat can affect your health."
         )
 
-    elif (user_gender == "M" and 6 <= user_body_fat_percent <= 13) or (
-        user_gender == "F" and 14 <= user_body_fat_percent <= 20
+    elif (user_gender == "M" and 5 < user_body_fat_percent <= 13) or (
+        user_gender == "F" and 13 < user_body_fat_percent <= 20
     ):
         print(
             f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Athletic Build category, with a lean body composition and a higher proportion of muscle mass. Continue your balanced diet and regular exercise regimen to maintain your athletic build, focusing on strength, flexibility, and endurance training for optimal performance."
         )
 
-    elif (user_gender == "M" and 14 <= user_body_fat_percent <= 17) or (
-        user_gender == "F" and 21 <= user_body_fat_percent <= 24
+    elif (user_gender == "M" and 13 < user_body_fat_percent <= 17) or (
+        user_gender == "F" and 20 < user_body_fat_percent <= 24
     ):
         print(
             f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Fitness category. You're within a healthy and fit body fat percentage range, common for people who lead an active lifestyle. Keep up the good work with regular physical activity and a balanced diet, focusing on specific fitness goals based on personal preferences."
         )
 
-    elif (user_gender == "M" and 18 <= user_body_fat_percent <= 25) or (
-        user_gender == "F" and 25 <= user_body_fat_percent <= 31
+    elif (user_gender == "M" and 17 < user_body_fat_percent <= 25) or (
+        user_gender == "F" and 24 < user_body_fat_percent <= 31
     ):
         print(
             f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Above but Acceptable category. Your body fat percentage is above the optimal range for fitness but still within an acceptable level. Consider increasing your physical activity level and monitoring your diet to improve your body composition, aiming for a mix of cardio, strength training, and flexibility exercises."
         )
 
-    elif (user_gender == "M" and user_body_fat_percent >= 26) or (
-        user_gender == "F" and user_body_fat_percent >= 32
+    elif (user_gender == "M" and user_body_fat_percent > 25) or (
+        user_gender == "F" and user_body_fat_percent > 31
     ):
         print(
             f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Obese category. This means your body fat percentage falls within the obese range, which may increase your risk for health issues. It's advisable to seek guidance from a healthcare professional to develop a personalized plan for reducing body fat, including nutritional counseling, a structured exercise program, and lifestyle adjustments."
