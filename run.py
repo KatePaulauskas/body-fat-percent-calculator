@@ -22,11 +22,8 @@ def get_measurements_date():
     """
 
     while True:
-        print(
-            "Enter the date measurements were taken in the following format: DD/MM/YYYY.\n"
-        )
 
-        date_measurements_taken = input("Enter date here:\n")
+        date_measurements_taken = input("Enter the date measurements were taken in the following format: DD/MM/YYYY:\n")
 
         if validate_date(date_measurements_taken):
             print("Date is valid!\n")
@@ -60,7 +57,7 @@ def validate_date(value):
         return True
 
     except ValueError:
-        print("Incorrect date format. Try again\n")
+        print("Incorrect date format. Try again.\n")
         return False
 
 
@@ -71,11 +68,8 @@ def get_user_name():
     """
 
     while True:
-        print(
-            "Enter your name. You can use letters, hyphens, apostrophes, and spaces (where appropriate)\n"
-        )
 
-        user_name = input("Enter your name here:\n")
+        user_name = input("Enter your name here.\n")
 
         if validate_user_name(user_name):
             print("Name is valid!\n")
@@ -96,7 +90,7 @@ def validate_user_name(name):
         return True
     else:
         print(
-            "Invalid name. Please ensure it contains only letters, hyphens, apostrophes, and spaces (where appropriate).\n"
+            "Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters.\n"
         )
         return False
 
@@ -107,15 +101,13 @@ def get_user_gender():
     Runs a while loop to collect a valid gender from the user via the terminal until the gender is valid.
     """
 
-    print("Enter your gender in the followign format: M or F.\n")
-
-    user_gender = input("Enter your gender:\n")
+    user_gender = input("Enter your gender in the followign format: M or F:\n")
 
     if user_gender == "M" or user_gender == "F":
         print("Gender is valid!\n")
         return user_gender
     else:
-        print("Invalid input. Please enter M or F.\n")
+        print("Invalid input.\n")
         return get_user_gender()
 
 
@@ -126,18 +118,17 @@ def get_user_age():
     Runs a while loop to collect a valid age from the user via the terminal until the age is valid.
     """
     while True:
-        print("Enter your age in numerical format.\n")
-        user_age = input("Enter your age here:\n")
+        user_age = input("Enter your age in numerical format (e.g. 30):\n")
 
         try:
             age = int(user_age)
-            if age > 0:
+            if age > 18 and age <= 130:
                 print("Age is valid!\n")
                 return age
             else:
-                print("Age must be a positive number. Please enter a valid age.\n")
+                print("Please enter a valid age (between 18 and 130).\n")
         except ValueError:
-            print("Invalid input. Please enter a numeric value for age.\n")
+            print("Invalid input.\n")
 
 
 def get_user_weight():
@@ -147,17 +138,16 @@ def get_user_weight():
     Runs a while loop to collect a valid weight from the user via the terminal until the weight is valid.
     """
     while True:
-        print("Enter your weight in kilograms in the followign format: 80.5.\n")
-        user_weight = input("Enter your weight here:\n")
+        user_weight = input("Enter your weight in kgs (e.g. 80.5):\n")
 
         try:
             weight = float(user_weight)
-            if weight > 0:
+            if weight > 10:
                 print("Weight is valid!\n")
                 return weight
             else:
                 print(
-                    "Weight must be a positive number. Please enter a valid weight.\n"
+                    "Weight is unrealistically low. Please enter a valid weight.\n"
                 )
         except ValueError:
             print("Invalid input. Please enter a numeric value for weight.\n")
@@ -226,7 +216,7 @@ def get_skinfold_measurements():
 
     while True:
         print(
-            "Enter skinfold measurements in mm in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh."
+            "Enter skinfold measurements in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh.\n"
         )
         print(
             "Data should be 7 numbers, separated by commas, numbers can have fractional parts. Example: 10.5,5,12,11.7,25,20,33\n"
@@ -342,7 +332,6 @@ def calculate_lean_body_weight(user_weight, user_body_fat_weight):
     lean_body_weight = user_weight - user_body_fat_weight
 
     return round(lean_body_weight, 2)
-
 
 def display_recommendations(user_gender, user_body_fat_percent):
     """
