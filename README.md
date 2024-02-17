@@ -34,6 +34,30 @@ Colorama Python package that allows  to produce colored terminal text was used t
 
 ### Testing behaviour
 
+### Validator Testing
+To align with web standards and ensure accessability compliance Python code was tested through [PEP8 Python Validator](https://pep8ci.herokuapp.com). Five errors were identified, as described below.
+
+**1. E501: Line Too Long (93 > 79 characters)**
+- Description: This error occurs when a line exceeds the recommended maximum length of 79 characters.
+- Resolution: Lines with such error were broken into multiple lines using parentheses as per instructions from [ Stack Overflow](https://stackoverflow.com/questions/53158284/python-giving-a-e501-line-too-long-error?noredirect=1).
+
+**2. E128: Continuation Line Under-Indented for Visual Indent**
+- Description: This error occurs when a continuation line (following an opening parenthesis) is not indented correctly.
+- Resolution: It was ensured that continuation lines with such error are indented to the same level as the opening parenthesis as per instructions from [Stack Overflow](https://stackoverflow.com/questions/15435811/what-is-pep8s-e128-continuation-line-under-indented-for-visual-indent).
+
+**3. W291: Trailing Whitespace**
+- Description: This warning indicates that there are extra spaces or tabs at the end of a line.
+- Resolution: All the trailing whitespaces were removed from the end of each line with such an error as per instruction form [Stack Overflow](https://stackoverflow.com/questions/21410075/what-is-trailing-whitespace-and-how-can-i-handle-this).
+
+**4. E127: Continuation Line Over-Indented for Visual Indent**
+- Description: This error occurs when a continuation line is indented farther than it should be for a visual indent.
+- Resolution: The indentations of the continuation lines were adjusted to align with the opening delimiter of the construct they belong to as per instruction from [Stack Overflow](https://stackoverflow.com/questions/21947121/pep8-continuation-line-over-indented-for-visual-indent).
+
+**5. E712: Comparison to False Should Be ‘if cond is False’**
+- Description: This error occurs when comparing a value to False using the == operator.
+- Resolution: 'if not cond:' was used instead of 'if cond == False:' as per instructions from [Stack Overflow](https://stackoverflow.com/questions/54474042/how-to-fix-the-flake-8-error-e712-comparison-to-false-should-be-if-cond-is-fal).
+
+
 ### Bugs
 
 #### Solvd Bugs
