@@ -69,7 +69,7 @@ def get_user_name():
 
     while True:
 
-        user_name = input("Enter your name here.\n")
+        user_name = input("Enter your name here:\n")
 
         if validate_user_name(user_name):
             print("Name is valid!\n")
@@ -162,7 +162,7 @@ def get_skinfold_measurements():
     via the terminal until the data is valid.
     """
 
-    print ("Would you like to view the information regarding the necessary equipment and procedures for conducting the measurements?")
+    print ("Would you like to view the information regarding the necessary equipment and procedures for conducting the measurements?\n")
     procedure_and_equiprment = input ("Enter your responce here: Y or N.\n")
 
     if procedure_and_equiprment == "Y":
@@ -227,7 +227,7 @@ def get_skinfold_measurements():
         skinfolds_measurements = measurements_str.split(",")
 
         if validate_skinfolds_measurements(skinfolds_measurements):
-            print("Data is valid!")
+            print("Data is valid!\n")
             break
     return skinfolds_measurements
 
@@ -263,7 +263,7 @@ def store_data(
     date, user_name, user_gender, user_age, user_weight, skinfold_measurements
 ):
     """
-    Store the validated data in the Google sheet.
+    Stores the validated data in the Google sheet 'measurements'.
     """
     print("Updating measurements worksheet...\n")
     measurements_sheet = SHEET.worksheet("measurements")
@@ -275,7 +275,7 @@ def store_data(
         user_weight,
     ] + skinfold_measurements
     measurements_sheet.append_row(data_row)
-    print("The date in the measurements worksheet updated successfully\n")
+    print("The data in the measurements worksheet updated successfully\n")
 
 
 def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
@@ -333,11 +333,26 @@ def calculate_lean_body_weight(user_weight, user_body_fat_weight):
 
     return round(lean_body_weight, 2)
 
+def store_results(
+    user_body_fat_percent, user_body_fat_weight, user_lean_body_weight
+):
+    """
+    Stores the calculated results for user's body fat percent, body fat weight and lean body mass in the Google sheet 'results'.
+    """
+    print("Updating results worksheet...\n")
+    results_sheet = SHEET.worksheet("results")
+    data_row = [
+        user_body_fat_percent, user_body_fat_weight, user_lean_body_weight
+    ]
+    results_sheet.append_row(data_row)
+    print("The data in the results worksheet updated successfully\n")
+
 def display_recommendations(user_gender, user_body_fat_percent):
     """
     Checks user gender and the body fat percent calculated
     Provides explanation of the result and further recommendations based on the user's fitness levels of the body
     """
+    print ("Summary and Recommendations:\n")
 
     if (user_gender == "M" and 2 <= user_body_fat_percent <= 5) or (
         user_gender == "F" and 10 <= user_body_fat_percent <= 13
@@ -406,6 +421,7 @@ def main():
         user_weight, user_body_fat_weight
     )
     print(f"Your lean body mass is {user_lean_body_weight} kg\n")
+    user_results = store_results(user_body_fat_percent, user_body_fat_weight, user_lean_body_weight)
     recommendations = display_recommendations(user_gender, user_body_fat_percent)
 
 
