@@ -2,6 +2,9 @@ import gspread
 from google.oauth2.service_account import Credentials
 import datetime
 import re
+from colorama import init, Fore, Back, Style
+# Initialize Colorama
+init()
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,10 +26,10 @@ def get_measurements_date():
 
     while True:
 
-        date_measurements_taken = input("Enter the date measurements were taken in the following format: DD/MM/YYYY:\n")
+        date_measurements_taken = input(Fore.BLUE + "Enter the date measurements were taken in the following format: DD/MM/YYYY:\n")
 
         if validate_date(date_measurements_taken):
-            print("Date is valid!\n")
+            print(Fore.GREEN + "Date is valid!\n")
             # Exit the loop after validating the date
             break
 
@@ -48,16 +51,16 @@ def validate_date(value):
         current_date = datetime.datetime.now()
         min_realistic_date = datetime.datetime.strptime("01/01/1900", date_format)
         if entered_date > current_date:
-            print("The date cannot be in the future. Please try again.\n")
+            print(Fore.RED + "The date cannot be in the future. Please try again.\n")
             return False
         elif entered_date < min_realistic_date:
-            print("The date is unrealistically old. Please enter a more recent date.\n")
+            print(Fore.RED + "The date is unrealistically old. Please enter a more recent date.\n")
             return False
 
         return True
 
     except ValueError:
-        print("Incorrect date format. Try again.\n")
+        print(Fore.RED + "Incorrect date format. Try again.\n")
         return False
 
 
@@ -69,10 +72,10 @@ def get_user_name():
 
     while True:
 
-        user_name = input("Enter your name here:\n")
+        user_name = input(Fore.BLUE + "Enter your name here:\n")
 
         if validate_user_name(user_name):
-            print("Name is valid!\n")
+            print(Fore.GREEN + "Name is valid!\n")
             # Exit the loop after validatign the name
             break
 
@@ -90,7 +93,7 @@ def validate_user_name(name):
         return True
     else:
         print(
-            "Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters.\n"
+            Fore.RED + "Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters.\n"
         )
         return False
 
@@ -101,13 +104,13 @@ def get_user_gender():
     Runs a while loop to collect a valid gender from the user via the terminal until the gender is valid.
     """
 
-    user_gender = input("Enter your gender in the followign format: M or F:\n")
+    user_gender = input(Fore.BLUE + "Enter your gender in the followign format: M or F:\n")
 
     if user_gender == "M" or user_gender == "F":
-        print("Gender is valid!\n")
+        print(Fore.GREEN + "Gender is valid!\n")
         return user_gender
     else:
-        print("Invalid input.\n")
+        print(Fore.RED + "Invalid input.\n")
         return get_user_gender()
 
 
@@ -118,17 +121,17 @@ def get_user_age():
     Runs a while loop to collect a valid age from the user via the terminal until the age is valid.
     """
     while True:
-        user_age = input("Enter your age in numerical format (e.g. 30):\n")
+        user_age = input(Fore.BLUE + "Enter your age in numerical format (e.g. 30):\n")
 
         try:
             age = int(user_age)
             if age > 18 and age <= 130:
-                print("Age is valid!\n")
+                print(Fore.GREEN + "Age is valid!\n")
                 return age
             else:
-                print("Please enter a valid age (between 18 and 130).\n")
+                print(Fore.RED + "Please enter a valid age (between 18 and 130).\n")
         except ValueError:
-            print("Invalid input.\n")
+            print(Fore.RED + "Invalid input.\n")
 
 
 def get_user_weight():
@@ -138,22 +141,22 @@ def get_user_weight():
     Runs a while loop to collect a valid weight from the user via the terminal until the weight is valid.
     """
     while True:
-        user_weight = input("Enter your weight in kgs (e.g. 80.5):\n")
+        user_weight = input(Fore.BLUE + "Enter your weight in kgs (e.g. 80.5):\n")
 
         try:
             weight = float(user_weight)
             if weight > 10:
-                print("Weight is valid!\n")
+                print(Fore.GREEN + "Weight is valid!\n")
                 return weight
             else:
                 print(
-                    "Weight is unrealistically low. Please enter a valid weight.\n"
+                    Fore.RED + "Weight is unrealistically low. Please enter a valid weight.\n"
                 )
         except ValueError:
-            print("Invalid input. Please enter a numeric value for weight.\n")
+            print(Fore.RED + "Invalid input. Please enter a numeric value for weight.\n")
 
 
-def get_skinfold_measurements():
+def offer_procedure_instructions():
     """
     Provides instructions on how the measurements should be taken.
     Requests the user to input the skinfold measurements in the form
@@ -162,11 +165,11 @@ def get_skinfold_measurements():
     via the terminal until the data is valid.
     """
 
-    print ("Would you like to view the information regarding the necessary equipment and procedures for conducting the measurements?\n")
-    procedure_and_equiprment = input ("Enter your responce here: Y or N.\n")
+    print (Fore.MAGENTA + "Would you like to view the information regarding the necessary equipment and procedures for conducting the measurements?\n")
+    procedure_and_equiprment = input (Fore.BLUE + "Enter your responce here: Y or N.\n")
 
     if procedure_and_equiprment == "Y":
-        print("Equipment: Skinfold caliper.\n")
+        print(Fore.CYAN + "Equipment: Skinfold caliper.\n")
         print("Procedure:\n")
         print(
             "Measurements are taken on the right side of body. Caliber needs to be perpendicular to the site analyzed."
@@ -180,17 +183,19 @@ def get_skinfold_measurements():
         )
 
     elif procedure_and_equiprment == "N":
-        print("No problem, we will skip to the next part.\n") 
+        print(Fore.BLUE + "No problem, we will skip to the next part.\n") 
 
     else:
-        print("Invalid input. Please enter Y or N.\n")
-        return procedure_and_equiprment
+        print(Fore.RED + "Invalid input.\n")
+        return offer_procedure_instructions()
 
-    print ("Would you like to review the instructions for taking the required skinfold measurements?")
-    instructions = input ("Enter your responce here: Y or N.\n")
+def offer_measurements_instructions():         
+
+    print (Fore.MAGENTA + "Would you like to review the instructions for taking the required skinfold measurements?\n")
+    instructions = input (Fore.BLUE + "Enter your responce here: Y or N.\n")
 
     if instructions == "Y":
-        print("Insturctions:\n")
+        print(Fore.CYAN + "Insturctions:\n")
         print(
             "Tricep: vertical fold at the midpoint of the posterior side of tricep between shoulder and elbow with arm relaxed at the side.\n"
         )
@@ -208,26 +213,34 @@ def get_skinfold_measurements():
         )
 
     elif instructions == "N":
-        print("No problem, we will skip to the next part.\n") 
+        print(Fore.BLUE + "No problem, we will skip to the next part.\n") 
 
     else:
-        print("Invalid input. Please enter Y or N.\n")
-        return instructions   
+        print(Fore.RED + "Invalid input.\n")
+        return offer_measurements_instructions()
 
+
+def get_skinfold_measurements():
+    """
+    Requests the user to input the skinfold measurements in the form
+    of a string of 7 numbers separated by commas.
+    Runs a while loop to collect a valid string of data from the user
+    via the terminal until the data is valid.
+    """
     while True:
         print(
-            "Enter skinfold measurements in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh.\n"
+            Fore.MAGENTA + "Enter skinfold measurements in the following order: tricep, chest, subscapular, midaxillary, abdominal, suprailiac, thigh.\n"
         )
         print(
-            "Data should be 7 numbers, separated by commas, numbers can have fractional parts. Example: 10.5,5,12,11.7,25,20,33\n"
+            Fore.MAGENTA + "Data should be 7 numbers, separated by commas, numbers can have fractional parts. Example: 10.5,5,12,11.7,25,20,33\n"
         )
 
-        measurements_str = input("Enter your skinfold measurements here in mm:\n")
+        measurements_str = input(Fore.BLUE + "Enter your skinfold measurements here in mm:\n")
 
         skinfolds_measurements = measurements_str.split(",")
 
         if validate_skinfolds_measurements(skinfolds_measurements):
-            print("Data is valid!\n")
+            print(Fore.GREEN + "Data is valid!\n")
             break
     return skinfolds_measurements
 
@@ -240,20 +253,20 @@ def validate_skinfolds_measurements(values):
     """
     if len(values) != 7:
         print(
-            f"Exactly 7 values of skinfold measurements required, you provided {len(values)}. Please try again.\n"
+            Fore.RED + f"Exactly 7 values of skinfold measurements required, you provided {len(values)}. Please try again.\n"
         )
         return False
     try:
         converted_skinfolds_measurements = [float(value) for value in values]
     except ValueError:
         print(
-            "Invalid data: one or more skinfold measurements entered values are not a number. Please try again.\n"
+            Fore.RED + "Invalid data: one or more skinfold measurements entered values are not a number. Please try again.\n"
         )
         return False
 
     # Check if any measurement value exceeds maximum possible skinfold size of 80 mm. Source: https://stackoverflow.com/questions/20211339/using-python-function-any-on-a-list-of-floats
     if any(value > 80 for value in converted_skinfolds_measurements):
-        print("Invalid data: one or more skinfold measurements entered values exceeds 80 mm. Skinfold measurement cannot exceed 80 mm. Please retake your measurements and enter correct values.\n")
+        print(Fore.RED + "Invalid data: one or more skinfold measurements entered values exceeds 80 mm. Skinfold measurement cannot exceed 80 mm. Please retake your measurements and enter correct values.\n")
         return False
 
     return True
@@ -265,7 +278,7 @@ def store_data(
     """
     Stores the validated data in the Google sheet 'measurements'.
     """
-    print("Updating measurements worksheet...\n")
+    print(Fore.MAGENTA + "Updating measurements worksheet...\n")
     measurements_sheet = SHEET.worksheet("measurements")
     data_row = [
         date,
@@ -275,7 +288,7 @@ def store_data(
         user_weight,
     ] + skinfold_measurements
     measurements_sheet.append_row(data_row)
-    print("The data in the measurements worksheet updated successfully\n")
+    print(Fore.GREEN + "The data in the measurements worksheet updated successfully\n")
 
 
 def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
@@ -284,7 +297,7 @@ def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     Usuing Jackson/Pollock 7-Site Caliper Method formula.
     Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php#footnote-1
     """
-    print("Calculating your body fat percent...\n")
+    print(Fore.BLUE + "Calculating your body fat percent...\n")
     skinfolds_sum = sum([float(measurement) for measurement in skinfold_measurements])
 
     if user_gender == "M":
@@ -318,7 +331,7 @@ def calculate_body_fat_weight(user_weight, user_body_fat_percent):
     """
     Calculates the body fat weight based on the weight user ptovided and the calculated  body fat percent
     """
-    print("Calculating your body fat weight...\n")
+    print(Fore.BLUE + "Calculating your body fat weight...\n")
     body_fat_weight = (user_weight * user_body_fat_percent) / 100
 
     return round(body_fat_weight, 2)
@@ -328,7 +341,7 @@ def calculate_lean_body_weight(user_weight, user_body_fat_weight):
     """
     Calculates user's body lean mass based on the user's weight and body fat weight
     """
-    print("Calculating your body lean mass...\n")
+    print(Fore.BLUE + "Calculating your body lean mass...\n")
     lean_body_weight = user_weight - user_body_fat_weight
 
     return round(lean_body_weight, 2)
@@ -339,61 +352,61 @@ def store_results(
     """
     Stores the calculated results for user's body fat percent, body fat weight and lean body mass in the Google sheet 'results'.
     """
-    print("Updating results worksheet...\n")
+    print(Fore.MAGENTA + "Updating results worksheet...\n")
     results_sheet = SHEET.worksheet("results")
     data_row = [
         user_body_fat_percent, user_body_fat_weight, user_lean_body_weight
     ]
     results_sheet.append_row(data_row)
-    print("The data in the results worksheet updated successfully\n")
+    print(Fore.GREEN + "The data in the results worksheet updated successfully\n")
 
 def display_recommendations(user_gender, user_body_fat_percent):
     """
     Checks user gender and the body fat percent calculated
     Provides explanation of the result and further recommendations based on the user's fitness levels of the body
     """
-    print ("Summary and Recommendations:\n")
+    print (Fore.MAGENTA + "Summary and Recommendations:\n")
 
     if (user_gender == "M" and 2 <= user_body_fat_percent <= 5) or (
         user_gender == "F" and 10 <= user_body_fat_percent <= 13
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Essential Fat category. Maintain your current level of physical activity and healthy eating habits. Consult with a healthcare provider if you're significantly below this range, as too little body fat can affect your health."
+            Fore.CYAN + f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Essential Fat category. Maintain your current level of physical activity and healthy eating habits. Consult with a healthcare provider if you're significantly below this range, as too little body fat can affect your health."
         )
 
     elif (user_gender == "M" and 5 < user_body_fat_percent <= 13) or (
         user_gender == "F" and 13 < user_body_fat_percent <= 20
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Athletic Build category, with a lean body composition and a higher proportion of muscle mass. Continue your balanced diet and regular exercise regimen to maintain your athletic build, focusing on strength, flexibility, and endurance training for optimal performance."
+            Fore.CYAN + f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Athletic Build category, with a lean body composition and a higher proportion of muscle mass. Continue your balanced diet and regular exercise regimen to maintain your athletic build, focusing on strength, flexibility, and endurance training for optimal performance."
         )
 
     elif (user_gender == "M" and 13 < user_body_fat_percent <= 17) or (
         user_gender == "F" and 20 < user_body_fat_percent <= 24
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Fitness category. You're within a healthy and fit body fat percentage range, common for people who lead an active lifestyle. Keep up the good work with regular physical activity and a balanced diet, focusing on specific fitness goals based on personal preferences."
+            Fore.CYAN + f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Fitness category. You're within a healthy and fit body fat percentage range, common for people who lead an active lifestyle. Keep up the good work with regular physical activity and a balanced diet, focusing on specific fitness goals based on personal preferences."
         )
 
     elif (user_gender == "M" and 17 < user_body_fat_percent <= 25) or (
         user_gender == "F" and 24 < user_body_fat_percent <= 31
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Above but Acceptable category. Your body fat percentage is above the optimal range for fitness but still within an acceptable level. Consider increasing your physical activity level and monitoring your diet to improve your body composition, aiming for a mix of cardio, strength training, and flexibility exercises."
+            Fore.CYAN + f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Above but Acceptable category. Your body fat percentage is above the optimal range for fitness but still within an acceptable level. Consider increasing your physical activity level and monitoring your diet to improve your body composition, aiming for a mix of cardio, strength training, and flexibility exercises."
         )
 
     elif (user_gender == "M" and user_body_fat_percent > 25) or (
         user_gender == "F" and user_body_fat_percent > 31
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Obese category. This means your body fat percentage falls within the obese range, which may increase your risk for health issues. It's advisable to seek guidance from a healthcare professional to develop a personalized plan for reducing body fat, including nutritional counseling, a structured exercise program, and lifestyle adjustments."
+            Fore.CYAN + f"Your body fat percentage of {user_body_fat_percent}% indicates that you are in the Obese category. This means your body fat percentage falls within the obese range, which may increase your risk for health issues. It's advisable to seek guidance from a healthcare professional to develop a personalized plan for reducing body fat, including nutritional counseling, a structured exercise program, and lifestyle adjustments."
         )
 
     elif (user_gender == "M" and user_body_fat_percent < 2) or (
         user_gender == "F" and user_body_fat_percent < 10
     ):
         print(
-            f"Your body fat percentage of {user_body_fat_percent}% is below the essential fat levels. This can pose serious health risks. Please consult with a healthcare provider."
+            Fore.RED + f"Your body fat percentage of {user_body_fat_percent}% is below the essential fat levels. This can pose serious health risks. Please consult with a healthcare provider."
         )
 
 def run_again():
@@ -401,7 +414,7 @@ def run_again():
     Asks the user if they want to run the program again or end it.
     """
     while True:
-        run_again_input = input("Would you like ot run the program again? Enter Y or N:\n")
+        run_again_input = input(Fore.BLUE + "Would you like ot run the program again? Enter Y or N:\n")
         
         if run_again_input == "Y":
             return True
@@ -410,7 +423,7 @@ def run_again():
             return False
 
         else:
-            print("Invalid input. Please enter Y or N.\n")
+            print(Fore.RED + "Invalid input. Please enter Y or N.\n")
 
 
 def main():
@@ -419,7 +432,7 @@ def main():
     """
     while True:
 
-        print("Welcome to Body Fat Percent Calculator\n")
+        print(Fore.MAGENTA + "Welcome to Body Fat Percent Calculator\n")
         print("In order to use the Calculator, please use a skinfold caliper\n")
 
         date = get_measurements_date()
@@ -427,6 +440,8 @@ def main():
         user_gender = get_user_gender()
         user_age = get_user_age()
         user_weight = get_user_weight()
+        procedure_instructions = offer_procedure_instructions()
+        measurements_instructions = offer_measurements_instructions()
         skinfold_measurements = get_skinfold_measurements()
         user_inputs = store_data(
             date, user_name, user_gender, user_age, user_weight, skinfold_measurements
@@ -434,19 +449,19 @@ def main():
         user_body_fat_percent = calculate_body_fat_percent(
             user_age, user_gender, skinfold_measurements
         )
-        print(f"Your body fat percent is {user_body_fat_percent} %\n")
+        print(Fore.CYAN + f"Your body fat percent is {user_body_fat_percent} %\n")
         user_body_fat_weight = calculate_body_fat_weight(user_weight, user_body_fat_percent)
-        print(f"Your body fat weight is {user_body_fat_weight} kg\n")
+        print(Fore.CYAN + f"Your body fat weight is {user_body_fat_weight} kg\n")
         user_lean_body_weight = calculate_lean_body_weight(
             user_weight, user_body_fat_weight
         )
-        print(f"Your lean body mass is {user_lean_body_weight} kg\n")
+        print(Fore.CYAN + f"Your lean body mass is {user_lean_body_weight} kg\n")
         user_results = store_results(user_body_fat_percent, user_body_fat_weight, user_lean_body_weight)
         recommendations = display_recommendations(user_gender, user_body_fat_percent)
         run_program_again = run_again()
 
         if run_program_again == False:
             break
-    print("The program has ended. Thank you for using the Body Fat Percent Calculator.")        
+    print(Fore.MAGENTA + "The program has ended. Thank you for using the Body Fat Percent Calculator.")        
 
 main()
