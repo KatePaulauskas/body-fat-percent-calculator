@@ -171,34 +171,58 @@ def get_skinfold_measurements():
     Runs a while loop to collect a valid string of data from the user
     via the terminal until the data is valid.
     """
-    print("Equipment: Skinfold caliper.\n")
-    print("Procedure:\n")
-    print(
-        "Measurements are taken on the right side of body. Caliber needs to be perpendicular to the site analyzed."
-    )
-    print("The participant must relax the muscle group that is being assessed.")
-    print(
-        "When skin fold is pinched, the practitioner should be taking reading at the middle of the pinched skin, not apex or base."
-    )
-    print(
-        "Wait 1 to 2 seconds after releasing caliber, record closest 0.5mm. Retake each site in order to obtain accurate readings.\n"
-    )
-    print("Insturctions:\n")
-    print(
-        "Tricep: vertical fold at the midpoint of the posterior side of tricep between shoulder and elbow with arm relaxed at the side.\n"
-    )
-    print(
-        "Chest: diagonal fold half the distance between anterior axillary line and the nipple.\n"
-    )
-    print("Subscapular: diagonal fold 2cm from inferior angle of the scapula.\n")
-    print(
-        "Midaxillary: at midaxillary line horizontal to xiphoid process of the sternum.\n"
-    )
-    print("Suprailiac: diagonal fold parallel and superior to the iliac crest.\n")
-    print("Abdominal: vertical fold 2cm to the right of the navel.\n")
-    print(
-        "Thigh: midpoint of the anterior side of the upper leg between the patella and top of thigh.\n"
-    )
+
+    print ("Would you like to view the information regarding the necessary equipment and procedures for conducting the measurements?")
+    procedure_and_equiprment = input ("Enter your responce here: Y or N.\n")
+
+    if procedure_and_equiprment == "Y":
+        print("Equipment: Skinfold caliper.\n")
+        print("Procedure:\n")
+        print(
+            "Measurements are taken on the right side of body. Caliber needs to be perpendicular to the site analyzed."
+        )
+        print("The participant must relax the muscle group that is being assessed.")
+        print(
+            "When skin fold is pinched, the practitioner should be taking reading at the middle of the pinched skin, not apex or base."
+        )
+        print(
+            "Wait 1 to 2 seconds after releasing caliber, record closest 0.5mm. Retake each site in order to obtain accurate readings.\n"
+        )
+
+    elif procedure_and_equiprment == "N":
+        print("No problem, we will skip to the next part.\n") 
+
+    else:
+        print("Invalid input. Please enter Y or N.\n")
+        return procedure_and_equiprment
+
+    print ("Would you like to review the instructions for taking the required skinfold measurements?")
+    instructions = input ("Enter your responce here: Y or N.\n")
+
+    if instructions == "Y":
+        print("Insturctions:\n")
+        print(
+            "Tricep: vertical fold at the midpoint of the posterior side of tricep between shoulder and elbow with arm relaxed at the side.\n"
+        )
+        print(
+            "Chest: diagonal fold half the distance between anterior axillary line and the nipple.\n"
+        )
+        print("Subscapular: diagonal fold 2cm from inferior angle of the scapula.\n")
+        print(
+            "Midaxillary: at midaxillary line horizontal to xiphoid process of the sternum.\n"
+        )
+        print("Suprailiac: diagonal fold parallel and superior to the iliac crest.\n")
+        print("Abdominal: vertical fold 2cm to the right of the navel.\n")
+        print(
+            "Thigh: midpoint of the anterior side of the upper leg between the patella and top of thigh.\n"
+        )
+
+    elif instructions == "N":
+        print("No problem, we will skip to the next part.\n") 
+
+    else:
+        print("Invalid input. Please enter Y or N.\n")
+        return instructions   
 
     while True:
         print(
