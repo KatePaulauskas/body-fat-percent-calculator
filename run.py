@@ -396,35 +396,57 @@ def display_recommendations(user_gender, user_body_fat_percent):
             f"Your body fat percentage of {user_body_fat_percent}% is below the essential fat levels. This can pose serious health risks. Please consult with a healthcare provider."
         )
 
+def run_again():
+    """
+    Asks the user if they want to run the program again or end it.
+    """
+    while True:
+        run_again_input = input("Would you like ot run the program again? Enter Y or N:\n")
+        
+        if run_again_input == "Y":
+            return True
+        
+        elif run_again_input == "N":
+            return False
+
+        else:
+            print("Invalid input. Please enter Y or N.\n")
+
 
 def main():
     """
     Run all program functions
     """
+    while True:
 
-    date = get_measurements_date()
-    user_name = get_user_name()
-    user_gender = get_user_gender()
-    user_age = get_user_age()
-    user_weight = get_user_weight()
-    skinfold_measurements = get_skinfold_measurements()
-    user_inputs = store_data(
-        date, user_name, user_gender, user_age, user_weight, skinfold_measurements
-    )
-    user_body_fat_percent = calculate_body_fat_percent(
-        user_age, user_gender, skinfold_measurements
-    )
-    print(f"Your body fat percent is {user_body_fat_percent} %\n")
-    user_body_fat_weight = calculate_body_fat_weight(user_weight, user_body_fat_percent)
-    print(f"Your body fat weight is {user_body_fat_weight} kg\n")
-    user_lean_body_weight = calculate_lean_body_weight(
-        user_weight, user_body_fat_weight
-    )
-    print(f"Your lean body mass is {user_lean_body_weight} kg\n")
-    user_results = store_results(user_body_fat_percent, user_body_fat_weight, user_lean_body_weight)
-    recommendations = display_recommendations(user_gender, user_body_fat_percent)
+        print("Welcome to Body Fat Percent Calculator\n")
+        print("In order to use the Calculator, please use a skinfold caliper\n")
 
+        date = get_measurements_date()
+        user_name = get_user_name()
+        user_gender = get_user_gender()
+        user_age = get_user_age()
+        user_weight = get_user_weight()
+        skinfold_measurements = get_skinfold_measurements()
+        user_inputs = store_data(
+            date, user_name, user_gender, user_age, user_weight, skinfold_measurements
+        )
+        user_body_fat_percent = calculate_body_fat_percent(
+            user_age, user_gender, skinfold_measurements
+        )
+        print(f"Your body fat percent is {user_body_fat_percent} %\n")
+        user_body_fat_weight = calculate_body_fat_weight(user_weight, user_body_fat_percent)
+        print(f"Your body fat weight is {user_body_fat_weight} kg\n")
+        user_lean_body_weight = calculate_lean_body_weight(
+            user_weight, user_body_fat_weight
+        )
+        print(f"Your lean body mass is {user_lean_body_weight} kg\n")
+        user_results = store_results(user_body_fat_percent, user_body_fat_weight, user_lean_body_weight)
+        recommendations = display_recommendations(user_gender, user_body_fat_percent)
+        run_program_again = run_again()
 
-print("Welcome to Body Fat Percent Calculator\n")
-print("In order to use the Calculator, please use a skinfold caliper\n")
+        if run_program_again == False:
+            break
+    print("The program has ended. Thank you for using the Body Fat Percent Calculator.")        
+
 main()
