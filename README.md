@@ -70,7 +70,7 @@ Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the
 |Enter a non-numeric input (e.g., 'fifty') | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a space into the weight input field | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a valid weight greater than 10 (e.g., '80.5') | The weight is accepted, the program displays a message 'Weight is valid!'and proceeds | Pass |
-|Testing weight procedure instructuins display |
+|Testing procedure instructuins display |
 |Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide responcxe in the following format Y or N. | Pass |
 |Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
 |Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
@@ -78,7 +78,11 @@ Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the
 |Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to vreview the instructions for taking the required skinfold measurements and offered to provide responcxe in the following format Y or N. | Pass |
 |Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
 |Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
-
+|Testing skinfold measurements input field |
+|Enter fewer or more than 7 values into the measurements input field(e.g., '10,15,12' or '11,20,12,10.7,9.5,20,18,35,45.5') | The program displays an error message: 'Exactly 7 values of skinfold measurements required, you provided X. Please try again.' The user is offered to attempt enterign skinfolds again. | Pass |
+|Enter non-numeric values (e.g., 'hello,5,12,11.7,25,20,33') | The program displays an error message: 'Invalid data: one or more skinfold measurements entered are not numbers. Please try again'. | Pass |
+|Enter measurements exceeding 80 mm (e.g., '90,70,85,95,100,80,75') | The program displays an error message: 'Invalid data: one or more measurements exceed 80 mm. Please retake your measurements and enter correct values'. | Pass |
+|Enter valid skinfold measurements in the correct format (e.g., “10.5,5,12,11.7,25,20,33”) | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
 
 
 ### Validator Testing
