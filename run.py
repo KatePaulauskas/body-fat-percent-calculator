@@ -91,6 +91,10 @@ def validate_user_name(name):
     Validates user name entry contains only letters, hyphens, apostrophes,
     and spaces. Raises error message if the name was not entered in the
     required format.
+    Sources:
+    https://stackoverflow.com/questions/28495822/
+    best-way-to-validate-a-name-in-python, 
+    https://docs.python.org/3/howto/regex.html
     """
     pattern = r"^[a-zA-Z][a-zA-Z' -]+$"
     if re.match(pattern, name):
@@ -112,11 +116,12 @@ def get_user_gender():
             Fore.BLUE + "Enter your gender in the following format: M or F:\n"
         )
 
-        if user_gender in ["M", "F"]:
+        if user_gender == "M" or user_gender == "F":
             print(Fore.GREEN + "Gender is valid!\n")
             return user_gender
         else:
             print(Fore.RED + "Invalid input.\n")
+            return get_user_gender()
 
 
 def get_user_age():
@@ -160,6 +165,10 @@ def get_user_weight():
             if weight > 10:
                 print(Fore.GREEN + "Weight is valid!\n")
                 return weight
+            elif weight < 0:
+                print(Fore.RED
+                      + "Weight must be a positive number. "
+                      "Please enter a valid weight.\n")    
             else:
                 print(Fore.RED
                       + "Weight is unrealistically low. "
@@ -171,9 +180,7 @@ def get_user_weight():
 
 def offer_procedure_instructions():
     """
-    Provides instructions on how the measurements should be taken. Requests
-    the user to input the skinfold measurements in the form of a string of 7
-    numbers separated by commas.
+    Offers instructions on how the measurements should be taken.
     """
     while True:
         print(Fore.MAGENTA + "Would you like to view the information "
@@ -205,7 +212,7 @@ def offer_procedure_instructions():
 
 def offer_measurements_instructions():
     """
-    Provides instructions for taking the required skinfold measurements.
+    Offers instructions for taking the required skinfold measurements.
     """
     while True:
         print(Fore.MAGENTA + "Would you like to review the instructions for "
