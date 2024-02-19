@@ -39,25 +39,58 @@ The application's logic flows as follows:
 7. Summary and personalised recommendations and presented to the user.
 8. User is given the option to run the program again or exit.
 
+## Data Model
 
-## Data Storage Model
-User data and calculated results are stored in a Google Sheets. The document comprised of two separate worksheets: 'measurements' and 'results'. The data does not contain any sensitive information.
+The Data Model of the Body Fat Percent Calculator is designed to efficiently organize, validate, and process user inputs, calculating body fitness levels to provide results and recommendations. It integrates Python packages to offer a secure and user-friendly experience, focusing on two main components:
+
+- **Google Sheets Integration via `gspread`.** Essential for the application's interaction with Google Sheets, where data is stored in two worksheets: 'measurements' and 'results'. This method offers a secure, accessible, and manageable solution for storing user inputs and calculated outcomes. The 'measurements' sheet captures raw data such as age, gender, weight, and skinfold measurements, while the 'results' sheet records calculated metrics. This setup enhances data clarity and facilitates progress tracking over time. Cloud-based storage guarantees data backup and accessibility, ensuring privacy and convenience for users.
+
+- **Terminal Interface Enhancement with `colorama`.** Improves user interaction by utilising the `colorama` package to output colored text in the terminal, making the interface more engaging and navigable. Color differentiation helps highlight application sections, error messages, and instructions, boosting readability and user engagement.
+
+- **Data Validation.** Every user input undergoes a thorough validation process for accuracy and reliability, using regular expressions and custom logic tailored to each input type. This step verifies date, name, gender, and numerical inputs against specific formats and ranges, crucial for maintaining data integrity and ensuring precise calculations.
+
+- **Processing and Calculation Logic.** After validation, the application employs the Jackson/Pollock 7-Site Caliper Method for calculations, enabling users to receive insightful and accurate body composition assessments.
+
+The integration of these components forms the foundation of the application's functionality, from data entry to result calculation, guaranteeing data integrity and a seamless user experience.
+
+### Data Storage
+
+User data and calculated results are stored in a Google Sheets document, organised into two worksheets: 'measurements' and 'results'. This allows to segregate different types of data while ensuring they remain accessible and manageable.
+
+- **Measurements Worksheet.** This worksheet is dedicated to storing raw user inputs. Each entry includes the date of measurement, user name, gender, age, weight, and the specific skinfold measurements. By collecting this data, the application lays the groundwork for the following body composition analysis. The design of this worksheet facilitates the tracking of individual progress over time, as users can input new measurements and compare them against their historical data.
+
+- **Results Worksheet.** After processing the user's measurements, the calculated results – body fat percentage, body fat mass, lean body mass – are stored in the 'results' worksheet. This separation of raw data from calculated results simplifies data analysis and allows for a clear overview of the user's body composition trends over time. 
+
+- **Data Privacy and Security.** Utilising Google Sheets for data storage ensures user data is protected against unauthorised access. 
+
+- **Ease of Management.** By storing data in Google Sheets, the application enables easy data management, analysis, and sharing capabilities.
+
+
+### Python Packages Used
+
+- `gspread`: Enables the application to interact with Google Sheets, facilitating the storage and retrieval of user data and calculated results. This package is crucial for the application’s data storage model, providing a bridge between the Python application and Google's cloud storage.
+
+- `google.oauth2.service_account`: Used for authenticating with the Google Sheets API, ensuring secure access to the application's data storage solution. It allows the application to maintain high standards of data security and privacy.
+
+- `datetime`: Supports handling and validation of date inputs, crucial for tracking the timing of measurements and ensuring data relevance.
+
+- `re` (Regular Expressions): Utilised for validating user inputs, such as name value, to ensure it meets predefined formats and criteria. 
+
+- `colorama`: Enhances the terminal interface by adding color to text, improving user experience by making the interface more engaging and easier to navigate. It plays a significant role in user interaction without directly affecting the data model or storage.
 
 ## Features
-Colours
-Colorama Python package that allows  to produce colored terminal text was used to add color to the text of the app and improve user experience. 
 
 ### Existing Features
 
 ### Future Features
 
 - Data Trends Analysis: this feature would allow the analysis of changes in body composition over time for returning users. This feature could provide insights into how their physical attributes have evolved, enabling more personalised health and fitness recommendations.
+
 - Expanded Measurement Methods: additional methods for calculating body composition could be incorporated to cater to a wider audience. This developemt could ensure that service is accessible and relevant to individuals with diverse needs and preferences.
+
 - Enhanced Data Management: to support health and fitness professionals in managing their clients' progress, storing data for different users separately could be inroduced. This could streamline the tracking of each client's journey, facilitating more effective coaching and support.
 
-## Data Model
 
-## Python Packages Used
 
 ## Testing
 
