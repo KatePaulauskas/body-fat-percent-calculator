@@ -1,6 +1,10 @@
 # Body Fat Percent Calculator
 
+This README document describes the Body Fat Percent Calculator, a Python-based application designed to calculate a user's body fat percentage using the Jackson/Pollock 7-Site Caliper Method. The calculator provides an interactive terminal interface, guiding users through the process of entering their personal measurements, including weight, age, gender, and skinfold measurements taken with a caliper. Users are presented with a summary of the calculations, which includes body fat percentage, body fat mass, lean body mass, and recommendations based on the user's body fitness levels. Additionally, collected data and results are stored securely via Google Sheets, ensuring privacy and ease of access for future reference.
+
 ## Goal, target audience
+
+The primary goal of this application is to provide users with a detailed analysis of their body composition, specifically focusing on body fat percentage, body fat weight, and lean body mass. The target audience includes fitness enthusiasts, health-conscious individuals, and anyone interested in obtaining a comprehensive understanding of their body fat composition for health or fitness planning.
 
 ### Project Links
 
@@ -15,7 +19,7 @@ First Time User / Returning User / Interested parties
 ## Structure 
 Program Flowchart / Logic
 
-## Data Storage / Model
+## Data Storage Model
 User data and calculated results are stored in a Google Sheets. The document comprised of two separate worksheets: 'measurements' and 'results'. The data does not contain any sensitive information.
 
 ## Features
