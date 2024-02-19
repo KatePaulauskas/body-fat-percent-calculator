@@ -70,23 +70,41 @@ Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the
 |Enter a non-numeric input (e.g., 'fifty') | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a space into the weight input field | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a valid weight greater than 10 (e.g., '80.5') | The weight is accepted, the program displays a message 'Weight is valid!'and proceeds | Pass |
-|Testing procedure instructuins display |
-|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide responcxe in the following format Y or N. | Pass |
+|Testing procedure instructions display |
+|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
 |Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
 |Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
-|Testing skinfold measurements instructuins display |
-|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to vreview the instructions for taking the required skinfold measurements and offered to provide responcxe in the following format Y or N. | Pass |
+|Testing skinfold measurements instructions display |
+|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to vreview the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
 |Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
 |Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
 |Testing skinfold measurements input field |
 |Enter fewer or more than 7 values into the measurements input field(e.g., '10,15,12' or '11,20,12,10.7,9.5,20,18,35,45.5') | The program displays an error message: 'Exactly 7 values of skinfold measurements required, you provided X. Please try again.' The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter non-numeric values (e.g., 'hello,5,12,11.7,25,20,33') | The program displays an error message: 'Invalid data: one or more skinfold measurements entered are not numbers. Please try again'. | Pass |
 |Enter measurements exceeding 80 mm (e.g., '90,70,85,95,100,80,75') | The program displays an error message: 'Invalid data: one or more measurements exceed 80 mm. Please retake your measurements and enter correct values'. | Pass |
-|Enter valid skinfold measurements in the correct format (e.g., “10.5,5,12,11.7,25,20,33”) | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
-
+|Enter valid skinfold measurements in the correct format (e.g., '10.5,5,12,11.7,25,20,33') | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
+|Testign recommendations display |
+|Essential Fat Category |
+|Men: Enter age 25, 'M' for gender, 60 for weight and the following skinfold measurements: '3.5, 11.0, 3.0, 3.0, 3.5, 3.3, 1.3' | The body fat percent, body fat weight and lean body mass are calculated and displaied. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight and the following skinfold measurements: '6.4, 5.5, 2.2, 4.1, 2.0, 22.3, 1.6' | The body fat percent, body fat weight and lean body mass are calculated and displaied. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
+|Athletic Build Category |
+|Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '6.9, 4.9, 4.4, 32.9, 3.9, 7.0, 8.2' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Athletic Build category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '5.0, 7.4, 7.8, 6.4, 25.3, 7.8, 4.5' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Athletic Build category. | Pass |
+|Fitness Category |
+|Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '5.9, 62.2, 4.2, 8.2, 6.8, 3.4, 4.9' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Fitness category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '8.8, 11.1, 4.7, 7.9, 39.5, 12.6, 14.2' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Fitness category. | Pass |
+|Above but Acceptable Category |
+|Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '15.2, 7.5, 12.9, 19.7, 34.8, 16.0, 16.4' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Above but Acceptable category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '13.7, 19.0, 12.6, 11.6, 28.9, 32.7, 14.5' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Above but Acceptable category. | Pass |
+|Obese Category |
+| Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '38.1, 39.5, 22.3, 29.0, 33.1, 29.2, 22.8' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Obese category. | Pass |
+| Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '33.0, 39.0, 23.7, 29.9, 21.0, 23.9, 26.2' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Obese category. | Pass |
+|Below Essential Fat Category |
+|Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '2.4, 5.8, 1.9, 1.2, 1.9, 2.1, 1.8' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Below Essential Fat category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '4.0, 14.6, 3.6, 4.4, 2.1, 1.3, 3.7' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Below Essential Fat category. | Pass |
 
 ### Validator Testing
-To align with web standards and ensure accessability compliance Python code was tested through [PEP8 Python Validator](https://pep8ci.herokuapp.com). Five errors were identified, as described below.
+To align with web standards and ensure accessibility compliance Python code was tested through [PEP8 Python Validator](https://pep8ci.herokuapp.com). Five errors were identified, as described below.
 
 **1. E501: Line Too Long (93 > 79 characters)**
 - Description: This error occurs when a line exceeds the recommended maximum length of 79 characters.
@@ -111,9 +129,9 @@ To align with web standards and ensure accessability compliance Python code was 
 
 ### Bugs
 
-#### Solvd Bugs
+#### Solved Bugs
 
-After adding Colorama module Python package to the code to be able to change twxt color and improve user experience, the project was successfully running locally in Gitpod. However after the deployment the following error was identified: 'ModuleNotFoundError'.
+After adding Colorama module Python package to the code to be able to change text color and improve user experience, the project was successfully running locally in Gitpod. However after the deployment the following error was identified: 'ModuleNotFoundError'.
 
 ```Traceback (most recent call last):
   File "/app/run.py", line 5, in <module>
@@ -122,11 +140,9 @@ ModuleNotFoundError: No module named 'colorama'
 ```
 
 **Solution**
-1. Colorama was reinstalled using command:
+1. Colorama was reinstalled using command: ```pip3 install colorama```, following instructions from [Stack Overflow](https://stackoverflow.com/questions/9846683/how-to-install-colorama-in-python).
 
-   ```pip3 install colorama```
-
-2. Requirements file was updated by adding ```colorama==0.4.6``` to requirements.txt file.
+2. Requirements file was updated by adding ```colorama==0.4.6``` to requirements.txt file utilising instructions from [CopyProgramming](https://copyprogramming.com/howto/heroku-python-failed-to-detect-app-matching-buildpack).
 
 ### Remaining Bugs
 No bugs remaining
@@ -135,7 +151,7 @@ No bugs remaining
 
 ## Deployment
 
-The calculator app is hosted on Heroku, a container-based cloud platform designed for app development, deployment, and management. It was deploied followign the steps below.
+The calculator app is hosted on Heroku, a container-based cloud platform designed for app development, deployment, and management. It was deployed following the steps below.
 
 Deployment Steps:
 
@@ -187,8 +203,8 @@ Deployment Steps:
 
 3. To ensure a user does not enter skinfold measurements that exceed maximum possible measurement taken with a skinfold caliper, any function was used utilising the following source [GeeksforGeeks](https://www.geeksforgeeks.org/python-any-function/)
 
+4. To validate Python code [PEP8 Python Validator](https://pep8ci.herokuapp.com), developed by Code Institute was used.
 
-To validate Python code [PEP8 Python Validator](https://pep8ci.herokuapp.com), developed by Code Institute was used.
 #### Content
 1. The body fat percent calculation was done using Jackson/Pollock 7-Site Caliper Method as described on [T.S.K.V. Spartacus](https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php)
 
@@ -205,4 +221,8 @@ To validate Python code [PEP8 Python Validator](https://pep8ci.herokuapp.com), d
 - [Stack Overflow: what is trailing whitespace and how can I handle this?](https://stackoverflow.com/questions/21410075/what-is-trailing-whitespace-and-how-can-i-handle-this).
 - [Stack Overflow: PEP8: continuation line over-indented for visual indent](https://stackoverflow.com/questions/21947121/pep8-continuation-line-over-indented-for-visual-indent).
 - [Stack Overflow: how to fix the error "E712 comparison to False should be 'if cond is False:' or 'if not cond:'](https://stackoverflow.com/questions/54474042/how-to-fix-the-flake-8-error-e712-comparison-to-false-should-be-if-cond-is-fal).
+
+2. To resolve the issue with Colorama, it was reinstalled using command: ```pip3 install colorama```, following instructions from [Stack Overflow](https://stackoverflow.com/questions/9846683/how-to-install-colorama-in-python).
+
+3. To further address the issues with Colorama, the requirements file was updated utilising instructions from [CopyProgramming](https://copyprogramming.com/howto/heroku-python-failed-to-detect-app-matching-buildpack)
 
