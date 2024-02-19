@@ -180,4 +180,29 @@ Deployment Steps:
 
 ## Credits
 
+#### Code development
+1. Date validation function was developed using [Tutorials Point](https://www.tutorialspoint.com/How-to-do-date-validation-in-Python).
+
+2. User name validation function was developed using [Stack Overflow: Best way to validate a name in Python](https://stackoverflow.com/questions/28495822/best-way-to-validate-a-name-in-python) and [Python 3.12.2 documentation: Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
+
+3. To ensure a user does not enter skinfold measurements that exceed maximum possible measurement taken with a skinfold caliper, any function was used utilising the following source [GeeksforGeeks](https://www.geeksforgeeks.org/python-any-function/)
+
+
+To validate Python code [PEP8 Python Validator](https://pep8ci.herokuapp.com), developed by Code Institute was used.
+#### Content
+1. The body fat percent calculation was done using Jackson/Pollock 7-Site Caliper Method as described on [T.S.K.V. Spartacus](https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php)
+
+2. Equipment and procedure instructions, fitness levels breakdown and recomendations were adopted the following sources: [TrainerMetrics](https://www.trainermetrics.com/fitness-assessment-calculations/body-fat-7-site-skinfold-jackson-pollock/) and [Thecalculator.co](https://www.thecalculator.co/health/Body-Fat-Percentage-7-Site-Skinfold-Calculator-1115.html).
+
+
+
+#### Fixing errors and bugs
+
+1. To resolve the errors received during code validation through [PEP8 Python Validator](https://pep8ci.herokuapp.com) the following resources from Stack Overflow were used:
+
+- [Stack Overflow: python giving a E501: line too long error](https://stackoverflow.com/questions/53158284/python-giving-a-e501-line-too-long-error?noredirect=1).
+- [Stack Overflow: What is PEP8's E128: continuation line under-indented for visual indent?](https://stackoverflow.com/questions/15435811/what-is-pep8s-e128-continuation-line-under-indented-for-visual-indent).
+- [Stack Overflow: what is trailing whitespace and how can I handle this?](https://stackoverflow.com/questions/21410075/what-is-trailing-whitespace-and-how-can-i-handle-this).
+- [Stack Overflow: PEP8: continuation line over-indented for visual indent](https://stackoverflow.com/questions/21947121/pep8-continuation-line-over-indented-for-visual-indent).
+- [Stack Overflow: how to fix the error "E712 comparison to False should be 'if cond is False:' or 'if not cond:'](https://stackoverflow.com/questions/54474042/how-to-fix-the-flake-8-error-e712-comparison-to-false-should-be-if-cond-is-fal).
 
