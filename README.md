@@ -8,13 +8,21 @@ The primary goal of this application is to provide users with a detailed analysi
 
 ### Project Links
 
-Live Site
+[Live Site](https://body-fat-percent-calculator-5ad0ac04aebf.herokuapp.com/)
 
-Repository
+[Repository](https://github.com/KatePaulauskas/body-fat-percent-calculator)
 
-## How to use / User Experience
-User Stories
-First Time User / Returning User / Interested parties
+## UX Experience
+
+Upon starting the application, users are greeted with a clear introduction and prompted to input their measurements, including the date measurements were taken, name, gender, age, weight, and specific skinfold measurements. Instructions for taking accurate measurements are provided to ensure data reliability. After all inputs are validated and submitted, the application calculates and displays the user's body fat percentage, body fat weight, and lean body mass and stores them. At the end recommendations based on the user's body composition are provided.
+
+### User Stories
+
+***First Time User:*** A new user can easily navigate through the application by following on-screen instructions to input their personal measurements and receive their body composition analysis.
+
+***Returning User:*** Users returning to the application can input new measurements to track changes in their body composition over time and have option to skip procedure and measurements instructions.
+
+***Interested Parties:*** Health and fitness professionals can use the application to assist clients in understanding their body composition and developing personalised fitness plans.
 
 ## Structure 
 Program Flowchart / Logic
