@@ -12,7 +12,9 @@ The primary goal of this application is to provide users with a detailed analysi
 
 [Repository](https://github.com/KatePaulauskas/body-fat-percent-calculator)
 
-## UX Experience
+## UX Design
+
+### User Experience
 
 Upon starting the application, users are greeted with a clear introduction and prompted to input their measurements, including the date measurements were taken, name, gender, age, weight, and specific skinfold measurements. Instructions for taking accurate measurements are provided to ensure data reliability. After all inputs are validated and submitted, the application calculates and displays the user's body fat percentage, body fat weight, and lean body mass and stores them. At the end recommendations based on the user's body composition are provided.
 
@@ -20,12 +22,23 @@ Upon starting the application, users are greeted with a clear introduction and p
 
 ***First Time User:*** A new user can easily navigate through the application by following on-screen instructions to input their personal measurements and receive their body composition analysis.
 
-***Returning User:*** Users returning to the application can input new measurements to track changes in their body composition over time and have option to skip procedure and measurements instructions.
+***Returning / Frequent User:*** Users returning to the application can input new measurements to track changes in their body composition over time and have option to skip procedure and measurements instructions.
 
 ***Interested Parties:*** Health and fitness professionals can use the application to assist clients in understanding their body composition and developing personalised fitness plans.
 
-## Structure 
-Program Flowchart / Logic
+## Logic
+
+The application's logic flows as follows:
+
+1. User inputs are collected through a series of prompts (date, name, gender, age, weight, skinfold measurements).
+2. Each input is validated for format and plausibility.
+3. Upon successful validation, the data is stored in a Google Sheets document 'measurements', ensuring user data privacy and easy access for future reference.
+4. The application calculates the body fat percentage, body fat weight, and lean body mass using the provided data.
+5. Results are displayed to the user 
+6. The calculated results are stored in a Google Sheets document called 'results'.
+7. Summary and personalised recommendations and presented to the user.
+8. User is given the option to run the program again or exit.
+
 
 ## Data Storage Model
 User data and calculated results are stored in a Google Sheets. The document comprised of two separate worksheets: 'measurements' and 'results'. The data does not contain any sensitive information.
