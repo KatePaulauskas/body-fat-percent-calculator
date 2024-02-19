@@ -51,6 +51,10 @@ Colorama Python package that allows  to produce colored terminal text was used t
 
 ### Future Features
 
+- Data Trends Analysis: this feature would allow the analysis of changes in body composition over time for returning users. This feature could provide insights into how their physical attributes have evolved, enabling more personalised health and fitness recommendations.
+- Expanded Measurement Methods: additional methods for calculating body composition could be incorporated to cater to a wider audience. This developemt could ensure that service is accessible and relevant to individuals with diverse needs and preferences.
+- Enhanced Data Management: to support health and fitness professionals in managing their clients' progress, storing data for different users separately could be inroduced. This could streamline the tracking of each client's journey, facilitating more effective coaching and support.
+
 ## Data Model
 
 ## Python Packages Used
