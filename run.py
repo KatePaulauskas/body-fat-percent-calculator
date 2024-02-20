@@ -113,8 +113,8 @@ def get_user_gender():
     """
     while True:
         user_gender = input(
-            Fore.BLUE + "Enter your gender in the following format: M or F:\n"
-        )
+            Fore.BLUE
+            + "Enter your gender in the following format: M or F:\n").upper()
 
         if user_gender == "M" or user_gender == "F":
             print(Fore.GREEN + "Gender is valid!\n")
@@ -188,7 +188,7 @@ def offer_procedure_instructions():
               "conducting the measurements?\n")
         procedure_and_equipment = input(
             Fore.BLUE + "Enter your response here: Y or N.\n"
-        )
+        ).upper()
 
         if procedure_and_equipment == "Y":
             print(Fore.CYAN + "Equipment: Skinfold caliper.\n"
@@ -217,7 +217,8 @@ def offer_measurements_instructions():
     while True:
         print(Fore.MAGENTA + "Would you like to review the instructions for "
               "taking the required skinfold measurements?\n")
-        instructions = input(Fore.BLUE + "Enter your response here: Y or N.\n")
+        instructions = input(Fore.BLUE
+            + "Enter your response here: Y or N.\n").upper()
 
         if instructions == "Y":
             print(Fore.CYAN + "Instructions:\n")
@@ -273,26 +274,31 @@ def get_skinfold_measurements():
 def validate_skinfolds_measurements(values):
     """
     Validates that there are exactly 7 numerical values and attempts to convert
-    all string values into floats.
+    all string values into floats. It ensures each value is either an integer or a float.
     """
-    if len(values) != 7:
+    # First, filter out any entries that are just spaces or empty
+    numeric_values = [value for value in values if value.strip()]
+
+    # Check if we still have exactly 7 values after filtering
+    if len(numeric_values) != 7:
         print(
             Fore.RED +
             "Exactly 7 values of skinfold measurements required, you provided "
-            f"{len(values)}. Please try again.\n"
+            f"{len(numeric_values)}. Please try again.\n"
         )
         return False
 
+    # Attempt to convert each value to float and check for non-numeric values
     try:
-        converted_skinfolds_measurements = [float(value) for value in values]
+        converted_skinfolds_measurements = [float(value) for value in numeric_values]
     except ValueError:
         print(
             Fore.RED +
-            "Invalid data: one or more skinfold measurements entered are not "
-            "numbers. Please try again.\n"
+            "Enter numeric value. Please ensure all entries are numbers.\n"
         )
         return False
-
+    # Ensure none of the measurements exceeds 80 mm
+    # Source: https://www.geeksforgeeks.org/python-any-function/
     if any(value > 80 for value in converted_skinfolds_measurements):
         print(
             Fore.RED +
@@ -302,7 +308,6 @@ def validate_skinfolds_measurements(values):
         return False
 
     return True
-
 
 def store_data(date,
                user_name,
@@ -326,6 +331,7 @@ def store_data(date,
 def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     """
     Calculates body fat percent using Jackson/Pollock 7-Site Caliper Method.
+    Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php
     """
     print(Fore.BLUE + "Calculating your body fat percent...\n")
     skinfolds_sum = sum(
@@ -458,7 +464,8 @@ def run_again():
     while True:
         run_again_input = input(
             Fore.BLUE
-            + "Would you like ot run the program again? Enter Y or N:\n")
+            + "Would you like ot run the program again? "
+            "Enter Y or N:\n").upper()
 
         if run_again_input == "Y":
             return True
@@ -516,8 +523,9 @@ def main():
         """
         'if cond == False' replaced with 'if not cond'
         Source:
-        https://stackoverflow.com/questions/48521886/
-        comparison-to-false-should-be-if-cond-is-false-or-if-not-cond
+        https://stackoverflow.com/questions/54474042/
+        how-to-fix-the-flake-8-error-e712-comparison-
+        to-false-should-be-if-cond-is-fal
         """
         if not run_program_again:
             break
