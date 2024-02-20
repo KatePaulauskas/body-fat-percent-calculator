@@ -111,43 +111,44 @@ Action/Feature          | Expected behavior       | Status         |
 |Enter a date that is in the future (e.g., “20/05/2025”) | The program displays an error message: 'The date cannot be in the future. Please try again.' The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
 |Enter a date that is in the distant past (e.g., “01/01/1800”) | The program displays an error message: 'The date is unrealistically old. Please enter a more recent date.' The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
 |Enter text into the input field for the date | Error message is displayed: ‘Incorrect date format. Try again.’ The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
-|Enter a space into the input field for the date | Error message is displayed: ‘Incorrect date format. Try again.’ The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
+|Enter a space into the input field for the date | Entering only a space results in error message being displayed: ‘Incorrect date format. Try again.’ The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
 |Enter a date in a non-leap year (e.g., “29/02/2023”) | The program displays an error message: “Incorrect date format. Try again.” The user is offered again to enter the date measurements were taken in the following format: DD/MM/YYYY. | Pass |
 |Enter a valid date in the format 'DD/MM/YYYY' | The date is accepted, the program displays a message 'Date is valid!' and proceeds. | Pass |
 Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the program displays a message 'Date is valid!' and proceeds. | Pass |
 |Testing name input field |
-|Enter a name that contains no letters (e.g., digits or special characters only). | The program displays an error message: 'Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters'. The user if offered to enter name again. | Pass |
-|Enter a name with fewer than 2 characters (e.g. 'A'). | The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user if offered to enter name again. | Pass |
-|Enter a name containing unsupported characters, such as special symbols other than hyphens and apostrophes (e.g. 'Tom@Smith') | The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user if offered to enter name again. | Pass |
-|Enter a name with a leading space (e.g. ' Jane') |  The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user if offered to enter name again. | Pass |
-|Enter a space in the name input field |  The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user if offered to enter name again. | Pass |
+|Enter a name that contains no letters (e.g., digits or special characters only). | The program displays an error message: 'Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters'. The user is offered to enter name again. | Pass |
+|Enter a name with fewer than 2 characters (e.g. 'A'). | The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user is offered to enter name again. | Pass |
+|Enter a name containing unsupported characters, such as special symbols other than hyphens and apostrophes (e.g. 'Tom@Smith') | The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user is offered to enter name again. | Pass |
+|Enter a name with a leading space (e.g. ' Jane') | The program displays the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user is offered to enter name again. | Pass |
+|Enter a space in the name input field | Entering only a space results in the program displaying the same error message “Invalid name. Ensure it contains only letters, hyphens, apostrophes, and spaces and consists of at least 2 characters”.  The user is offered to enter name again. | Pass |
 |Enter a valid name containing only letters, hyphens, apostrophes, and spaces. | The name is accepted, the program displays a message 'Name is valid!' and proceeds. | Pass |
 |Testing gender input field |
-|Enter any input other than 'M' or 'F' (e.g., number, text, lower case 'm' or 'f') | The program displays an error message: “Invalid input.” The user is offered to enter their gender in the following format: M or F. | Pass |
-|Enter space in the gender input field | The program displays an error message: “Invalid input.” The user is offered to enter their gender in the following format: M or F. | Pass |
-|Enter 'M' | The gender is accepted, the program displays a message 'Gender is valid!' and proceeds. | Pass |
-|Enter 'F' | The gender is accepted, the program displays a message 'Gender is valid!' and proceeds. | Pass |
+|Enter any input other than 'm', 'M', 'f' or 'F' (e.g., number, text) | The program displays an error message: “Invalid input.” The user is offered to enter their gender in the following format: M or F. | Pass |
+|Enter space in the gender input field | Entering only a space results in the program displaying an error message: “Invalid input.” The user is offered to enter their gender in the following format: M or F. | Pass |
+Enter 'm', 'M', 'f' or 'F' | The gender is accepted, the program displays a message 'Gender is valid!' and proceeds. | Pass |
 |Testing age input field |
 |Enter a negative age (e.g., '-10') | The program displays an error message: 'Please enter a valid age (between 18 and 130)'. The user is offered to enter age in numerical format (e.g. 30) | Pass |
 |Enter zero as the age | The program displays an error message: 'Please enter a valid age (between 18 and 130)'. The user is offered to enter age in numerical format (e.g. 30) | Pass |
 |Enter age below 18 (e.g. '15') | The program displays an error message: 'Please enter a valid age (between 18 and 130)'. The user is offered to enter age in numerical format (e.g. 30) | Pass |
 |Enter age above 130 (e.g. 150) | The program displays an error message: 'Please enter a valid age (between 18 and 130)'. The user is offered to enter age in numerical format (e.g. 30) | Pass |
 |Enter a non-numeric input (e.g., 'twenty') | The program displays an error message: 'Invalid input.' The user is offered to enter age in numerical format (e.g. 30) |
-|Enter space to the age input field | The program displays an error message: 'Invalid input.' The user is offered to enter age in numerical format (e.g. 30) |
+|Enter space to the age input field | Entering only a space results in the program displaying an error message: 'Invalid input.' The user is offered to enter age in numerical format (e.g. 30) |
 |Enter a valid age between 18 and 130 (e.g., '30'). | The age is accepted, the program displays a message 'Age is valid!' and proceeds. | Pass |
 |Testing weight input field |
 |Enter a negative weight (e.g., '-5') | The program displays an error message: 'Weight must be a positive number. Please enter a valid weight'. The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a non-numeric input (e.g., 'fifty') | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
-|Enter a space into the weight input field | The program displays an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
+|Enter a space into the weight input field | Entering only a space results in the program displaying an error message: 'Invalid input. Please enter a numeric value for weight.' The user is offered to enter weight in kgs (e.g. 80.5). | Pass |
 |Enter a valid weight greater than 10 (e.g., '80.5') | The weight is accepted, the program displays a message 'Weight is valid!'and proceeds | Pass |
 |Testing procedure instructions display |
-|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
-|Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
-|Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
+|Enter any input other than 'y','Y', 'n' or 'N' (e.g., number, special character, text) | The program displays an error message: 'Invalid input'. The user is asked if they would like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
+|Enter a space into the input field | Entering only a space results in the program displaying an error message: 'Invalid input. The user is asked if they would like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
+|Enter 'y' or 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
+|Enter 'n' or 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
 |Testing skinfold measurements instructions display |
-|Enter any input other than 'Y' or 'N' (e.g., number, text, lower case 'y' or 'n') | The program displays an error message: 'Invalid input'. The user is asked if they would you like to vreview the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
-|Enter 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
-|Enter 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
+|Enter any input other than 'y','Y', 'n' or 'N' (e.g., number, special character, text) | The program displays an error message: 'Invalid input'. The user is asked if they would like to review the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
+|Enter a space into the input field | Entering only a space results in the program displaying an error message: 'Invalid input. The user is asked if they would like to review the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
+|Enter 'y' or 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
+|Enter 'n' or 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
 |Testing skinfold measurements input field |
 |Enter fewer or more than 7 values into the measurements input field(e.g., '10,15,12' or '11,20,12,10.7,9.5,20,18,35,45.5') | The program displays an error message: 'Exactly 7 values of skinfold measurements required, you provided X. Please try again.' The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter non-numeric values (e.g., 'hello,5,12,11.7,25,20,33') | The program displays an error message: 'Invalid data: one or more skinfold measurements entered are not numbers. Please try again'. | Pass |
@@ -155,8 +156,8 @@ Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the
 |Enter valid skinfold measurements in the correct format (e.g., '10.5,5,12,11.7,25,20,33') | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
 |Testign recommendations display |
 |Essential Fat Category |
-|Men: Enter age 25, 'M' for gender, 60 for weight and the following skinfold measurements: '3.5, 11.0, 3.0, 3.0, 3.5, 3.3, 1.3' | The body fat percent, body fat weight and lean body mass are calculated and displaied. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
-|Women: Enter age 25, 'F' for gender, 60 for weight and the following skinfold measurements: '6.4, 5.5, 2.2, 4.1, 2.0, 22.3, 1.6' | The body fat percent, body fat weight and lean body mass are calculated and displaied. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
+|Men: Enter age 25, 'M' for gender, 60 for weight and the following skinfold measurements: '3.5, 11.0, 3.0, 3.0, 3.5, 3.3, 1.3' | The body fat percent, body fat weight and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
+|Women: Enter age 25, 'F' for gender, 60 for weight and the following skinfold measurements: '6.4, 5.5, 2.2, 4.1, 2.0, 22.3, 1.6' | The body fat percent, body fat weight and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Essential Fat category. | Pass |
 |Athletic Build Category |
 |Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '6.9, 4.9, 4.4, 32.9, 3.9, 7.0, 8.2' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Athletic Build category. | Pass |
 |Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '5.0, 7.4, 7.8, 6.4, 25.3, 7.8, 4.5' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating an Athletic Build category. | Pass |
@@ -172,6 +173,11 @@ Enter a date in a leap year (e.g., “29/02/2020”) | The date is accepted, the
 |Below Essential Fat Category |
 |Men: Enter age 25, 'M' for gender, 60 for weight, and the following skinfold measurements: '2.4, 5.8, 1.9, 1.2, 1.9, 2.1, 1.8' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Below Essential Fat category. | Pass |
 |Women: Enter age 25, 'F' for gender, 60 for weight, and the following skinfold measurements: '4.0, 14.6, 3.6, 4.4, 2.1, 1.3, 3.7' | The body fat percent, body fat weight, and lean body mass are calculated and displayed. User presented with the Summary and Recommendations indicating a Below Essential Fat category. | Pass |
+|Testing 'would you like to run the program again' input field|
+|Enter any input other than 'y','Y', 'n' or 'N' (e.g., number, text, special character or space) | The program displays an error message: 'Invalid input. Please enter Y or N'. The user is asked if they would like to run the program again and offered to provide a response in the following format: Y or N. | Pass |
+|Enter a space into the input field | Entering only a space results in the program displaying an error message: : 'Invalid input. Please enter Y or N'. The user is asked if they would like to run the program again and offered to provide a response in the following format: Y or N. | Pass |
+|Enter 'y' or 'Y' to run the program again | The program starts from the beggining and welcome message is displayed. | Pass |
+|Enter 'n' or 'N' to end the program | The program acknowledges the choice with the following message: 'The program has ended. Thank you for using the Body Fat Percent Calculator'. | Pass |
 
 ### Validator Testing
 To align with web standards and ensure accessibility compliance Python code was tested through [PEP8 Python Validator](https://pep8ci.herokuapp.com). Five errors were identified, as described below.
