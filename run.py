@@ -278,7 +278,7 @@ def validate_skinfolds_measurements(values):
     all string values into floats. It ensures each value is either an integer or a float.
     Checks for entries that are spaces and dots without numbers.
     """
-    # Pattern to identify entries that are purely non-numeric (e.g., empty, just dots)
+    # Pattern to identify entries that are purely non-numeric (e.g., empty, just dots or commas)
     #Source: https://www.geeksforgeeks.org/write-regular-expressions/
     #https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
     non_numeric_pattern = r"^\s*[\.,]*\s*$"
@@ -310,8 +310,16 @@ def validate_skinfolds_measurements(values):
             "Please retake your measurements and enter correct values.\n"
         )
         return False
+    #Prevent user from entering negative numbers
+    if any(value < 0 for value in converted_skinfolds_measurements):
+        print(
+            Fore.RED +
+            "Invalid data: measurements cannot be negative. "
+            "Please enter positive values only.\n"
+    )
+    return False    
 
-        # Check if we still have exactly 7 values after filtering
+    # Check if we still have exactly 7 values after filtering
     if len(numeric_values) != 7:
         print(
             Fore.RED +
