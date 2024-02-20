@@ -255,15 +255,16 @@ def get_skinfold_measurements():
             "Enter skinfold measurements in the following order: "
             "tricep, chest, subscapular, midaxillary, abdominal, "
             "suprailiac, thigh.\n"
-            "Data should be 7 numbers, separated by commas, "
+            "Data should be 7 numbers, separated by spaces, "
             "numbers can have fractional parts. "
-            "Example: 10.5,5,12,11.7,25,20,33\n"
+            "Example: 10.5 5 12 11.7 25 20 33\n"
         )
 
         measurements_str = input(Fore.BLUE
                                  + "Enter your skinfold measurements "
                                  "here in mm:\n")
-        skinfolds_measurements = measurements_str.split(",")
+        ##Replace comas with spaces, if entered by mistake and split the string                          
+        skinfolds_measurements = measurements_str.replace(",", " ").split()
 
         if validate_skinfolds_measurements(skinfolds_measurements):
             print(Fore.GREEN + "Data is valid!\n")
@@ -275,18 +276,21 @@ def validate_skinfolds_measurements(values):
     """
     Validates that there are exactly 7 numerical values and attempts to convert
     all string values into floats. It ensures each value is either an integer or a float.
+    Checks for entries that are spaces and dots without numbers.
     """
-    # First, filter out any entries that are just spaces or empty
-    numeric_values = [value for value in values if value.strip()]
+    # Pattern to identify entries that are purely non-numeric (e.g., empty, just dots)
+    #Source: https://www.geeksforgeeks.org/write-regular-expressions/
+    #https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+    non_numeric_pattern = r"^\s*[\.,]*\s*$"
 
-    # Check if we still have exactly 7 values after filtering
-    if len(numeric_values) != 7:
-        print(
-            Fore.RED +
-            "Exactly 7 values of skinfold measurements required, you provided "
-            f"{len(numeric_values)}. Please try again.\n"
-        )
+    # Ensure each entry is not just dots or empty spaces
+    if any(re.match(non_numeric_pattern, value) for value in values):
+        print(Fore.RED + "Invalid input. Each measurement must be a numerical value, "
+        "entries containing only spaces or dots are not accepted.\n")
         return False
+
+    # Filter out any entries that are just spaces or empty
+    numeric_values = [value for value in values if value.strip()]
 
     # Attempt to convert each value to float and check for non-numeric values
     try:
@@ -306,6 +310,15 @@ def validate_skinfolds_measurements(values):
             "Please retake your measurements and enter correct values.\n"
         )
         return False
+
+        # Check if we still have exactly 7 values after filtering
+    if len(numeric_values) != 7:
+        print(
+            Fore.RED +
+            "Exactly 7 values of skinfold measurements required, you provided "
+            f"{len(numeric_values)}. Please try again.\n"
+        )
+        return False    
 
     return True
 
@@ -464,7 +477,7 @@ def run_again():
     while True:
         run_again_input = input(
             Fore.BLUE
-            + "Would you like ot run the program again? "
+            + "Would you like to run the program again? "
             "Enter Y or N:\n").upper()
 
         if run_again_input == "Y":
