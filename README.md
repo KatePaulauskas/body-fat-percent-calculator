@@ -37,6 +37,10 @@ The application's logic flows as follows:
 7. Summary and personalised recommendations and presented to the user.
 8. User is given the option to run the program again or exit.
 
+### Application Logit Chart
+
+![Body Fat Percent Calculator Logit Chart](media/logic-chart.png)
+
 ## Data Model
 
 The Data Model of the Body Fat Percent Calculator is designed to efficiently organize, validate, and process user inputs, calculating body fitness levels to provide results and recommendations. It integrates Python packages to offer a secure and user-friendly experience, focusing on two main components:
@@ -141,13 +145,13 @@ Enter 'm', 'M', 'f' or 'F' | The gender is accepted, the program displays a mess
 |Enter a valid weight greater than 10 (e.g., '80.5') | The weight is accepted, the program displays a message 'Weight is valid!'and proceeds | Pass |
 |Testing procedure instructions display |
 |Enter any input other than 'y','Y', 'n' or 'N' (e.g., number, special character, text) | The program displays an error message: 'Invalid input'. The user is asked if they would like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
-|Enter a space into the input field | Entering only a space results in the program displaying an error message: 'Invalid input. The user is asked if they would like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
+|Enter a space into the input field | Entering only a space results in the program displaying an error message: 'Invalid input'. The user is asked if they would like to view the information regarding the necessary equipment and procedures for conducting the measurements and offered to provide response in the following format Y or N. | Pass |
 |Enter 'y' or 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
 |Enter 'n' or 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
 |Testing skinfold measurements instructions display |
 |Enter any input other than 'y','Y', 'n' or 'N' (e.g., number, special character, text) | The program displays an error message: 'Invalid input'. The user is asked if they would like to review the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
 |Enter a space into the input field | Entering only a space results in the program displaying an error message: 'Invalid input. The user is asked if they would like to review the instructions for taking the required skinfold measurements and offered to provide response in the following format Y or N. | Pass |
-|Enter 'y' or 'Y' to view the instructions | The program displays the equipment and procedure instructions. | Pass |
+|Enter 'y' or 'Y' to view the instructions | The program displays the skinfold measurements instructions. | Pass |
 |Enter 'n' or 'N' to skip viewing the instructions | The program acknowledges the choice with the following message: 'No problem, we will skip to the next part' and proceeds. | Pass |
 |Testing skinfold measurements input field |
 |Enter fewer or more than 7 values into the measurements input field(e.g., '10 15 12' or '11 20 12 10.7 9.5 20 18 35 45.5') | The program displays an error message: 'Exactly 7 values of skinfold measurements required, you provided X. Please try again.' The user is offered to attempt enterign skinfolds again. | Pass |
@@ -155,7 +159,7 @@ Enter 'm', 'M', 'f' or 'F' | The gender is accepted, the program displays a mess
 |Enter measurements exceeding 80 mm (e.g., '90 70 85 95 100 80 75') | The program displays an error message: 'Invalid data: one or more measurements exceed 80 mm. Please retake your measurements and enter correct values'.  The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter only spaces into the input field | Entering only spaces results in the program displaying an error message: 'Exactly 7 values of skinfold measurements required, you provided 0. Please try again.'  The user is offered to attempt enterign skinfolds again.| Pass |
 |Enter only commas into the input field | Entering only commas results in the program displaying an error message: 'Exactly 7 values of skinfold measurements required, you provided 0. Please try again.'  The user is offered to attempt enterign skinfolds again.| Pass |
-|Enter coma values only (e.g. ...  .. .. ..) | Entering only dots results in the program displaying an error message: 'Invalid input. Each measurement must be a numerical value, entries containing only dots are not accepted'.  The user is offered to attempt enterign skinfolds again. | Pass |
+|Enter dot values only (e.g. ...  .. .. ..) | Entering only dots results in the program displaying an error message: 'Invalid input. Each measurement must be a numerical value, entries containing only dots are not accepted'.  The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter skinfold measurements with negative values (e.g. -25,11 34 55 55 -6 8) | The program displays an error message: 'Invalid data: measurements cannot be negative. Please enter positive values only'. The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter valid skinfold measurements in the correct format (e.g., '10.5 5 12 11.7 25 20 33') | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
 |Testign recommendations display |
