@@ -6,6 +6,8 @@ Body Fat Percent Calculator is a Python-based application designed to calculate 
 
 The primary goal of this application is to provide users with a detailed analysis of their body composition, specifically focusing on body fat percentage, body fat weight, and lean body mass. The target audience includes fitness enthusiasts, health-conscious individuals, and anyone interested in obtaining a comprehensive understanding of their body fat composition for health or fitness planning.
 
+![Responsive Mockup]()
+
 ### Project Links
 
 [Live Site](https://body-fat-percent-calculator-5ad0ac04aebf.herokuapp.com/)

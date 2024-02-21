@@ -27,7 +27,7 @@ def get_measurements_date():
     """
     while True:
         date_measurements_taken = input(
-            Style.BRIGHT + Fore.CYAN +
+            Fore.CYAN +
             "Enter the date measurements were taken in the following format: "
             "DD/MM/YYYY:\n"
             )
