@@ -26,7 +26,8 @@ def get_measurements_date():
     until the data is valid.
     """
     while True:
-        date_measurements_taken = input(Style.BRIGHT + Fore.CYAN +
+        date_measurements_taken = input(
+            Style.BRIGHT + Fore.CYAN +
             "Enter the date measurements were taken in the following format: "
             "DD/MM/YYYY:\n"
             )
@@ -167,7 +168,7 @@ def get_user_weight():
             elif weight < 0:
                 print(Fore.RED
                       + "Weight must be a positive number. "
-                      "Please enter a valid weight.\n")   
+                      "Please enter a valid weight.\n")
             else:
                 print(Fore.RED
                       + "Weight is unrealistically low. "
@@ -216,7 +217,8 @@ def offer_measurements_instructions():
     while True:
         print(Fore.YELLOW + "Would you like to review the instructions for "
               "taking the required skinfold measurements?\n")
-        instructions = input(Fore.CYAN
+        instructions = input(
+            Fore.CYAN
             + "Enter your response here: Y or N.\n").upper()
 
         if instructions == "Y":
@@ -262,7 +264,7 @@ def get_skinfold_measurements():
         measurements_str = input(Fore.CYAN
                                  + "Enter your skinfold measurements "
                                  "here in mm:\n")
-        # Replace comas with spaces, if entered by mistake and split the string                          
+        # Replace comas with spaces, if entered by mistake and split the string
         skinfolds_measurements = measurements_str.replace(",", " ").split()
 
         if validate_skinfolds_measurements(skinfolds_measurements):
@@ -274,8 +276,8 @@ def get_skinfold_measurements():
 def validate_skinfolds_measurements(values):
     """
     Validates that there are exactly 7 numerical values and attempts to convert
-    all string values into floats. It ensures each value is either an integer or a float.
-    Checks for entries that are spaces and dots without numbers.
+    all string values into floats. It ensures each value is either an integer
+    or a float. Checks for entries that are spaces and dots without numbers.
     """
     # Pattern to identify entries that are purely non-numeric
     # (e.g., empty, just dots or commas)
@@ -286,9 +288,10 @@ def validate_skinfolds_measurements(values):
 
     # Ensure each entry is not just dots or empty spaces
     if any(re.match(non_numeric_pattern, value) for value in values):
-        print(Fore.RED + "Invalid input. Each measurement must be a 
-        "numerical value, entries containing only spaces or dots "
-        "are not accepted.\n")
+        print(
+            Fore.RED + "Invalid input. Each measurement must be a "
+            "numerical value, entries containing only spaces or dots "
+            "are not accepted.\n")
         return False
 
     # Filter out any entries that are just spaces or empty
@@ -296,7 +299,8 @@ def validate_skinfolds_measurements(values):
 
     # Attempt to convert each value to float and check for non-numeric values
     try:
-        converted_skinfolds_measurements = [float(value) for value in numeric_values]
+        converted_skinfolds_measurements = [float(value)
+                                            for value in numeric_values]
     except ValueError:
         print(
             Fore.RED +
@@ -312,14 +316,14 @@ def validate_skinfolds_measurements(values):
             "Please retake your measurements and enter correct values.\n"
         )
         return False
-    #Prevent user from entering negative numbers
+    # Prevent user from entering negative numbers
     if any(value < 0 for value in converted_skinfolds_measurements):
         print(
             Fore.RED +
             "Invalid data: measurements cannot be negative. "
             "Please enter positive values only.\n"
         )
-        return False    
+        return False
 
     # Check if we still have exactly 7 values
     if len(numeric_values) != 7:
@@ -328,9 +332,10 @@ def validate_skinfolds_measurements(values):
             "Exactly 7 values of skinfold measurements required, you provided "
             f"{len(numeric_values)}. Please try again.\n"
         )
-        return False    
+        return False
 
     return True
+
 
 def store_data(date,
                user_name,
@@ -552,7 +557,8 @@ def main():
         """
         if not run_program_again:
             break
-    print(Fore.YELLOW
+    print(
+        Fore.YELLOW
         + "The program has ended. Thank you for using the Body Fat Percent "
         "Calculator.")
 
