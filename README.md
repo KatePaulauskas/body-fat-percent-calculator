@@ -37,7 +37,7 @@ The application's logic flows as follows:
 7. Summary and personalised recommendations and presented to the user.
 8. User is given the option to run the program again or exit.
 
-### Application Logit Chart
+### Application Logit Flow Chart
 
 ![Body Fat Percent Calculator Logit Chart](media/logic-chart.png)
 

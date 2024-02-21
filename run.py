@@ -26,11 +26,10 @@ def get_measurements_date():
     until the data is valid.
     """
     while True:
-        date_measurements_taken = input(Style.BRIGHT +
-            Fore.CYAN +
+        date_measurements_taken = input(Style.BRIGHT + Fore.CYAN +
             "Enter the date measurements were taken in the following format: "
             "DD/MM/YYYY:\n"
-        )
+            )
 
         if validate_date(date_measurements_taken):
             print(Fore.GREEN + "Date is valid!\n")
@@ -93,7 +92,7 @@ def validate_user_name(name):
     required format.
     Sources:
     https://stackoverflow.com/questions/28495822/
-    best-way-to-validate-a-name-in-python, 
+    best-way-to-validate-a-name-in-python,
     https://docs.python.org/3/howto/regex.html
     """
     pattern = r"^[a-zA-Z][a-zA-Z' -]+$"
@@ -168,7 +167,7 @@ def get_user_weight():
             elif weight < 0:
                 print(Fore.RED
                       + "Weight must be a positive number. "
-                      "Please enter a valid weight.\n")    
+                      "Please enter a valid weight.\n")   
             else:
                 print(Fore.RED
                       + "Weight is unrealistically low. "
@@ -263,7 +262,7 @@ def get_skinfold_measurements():
         measurements_str = input(Fore.CYAN
                                  + "Enter your skinfold measurements "
                                  "here in mm:\n")
-        ##Replace comas with spaces, if entered by mistake and split the string                          
+        # Replace comas with spaces, if entered by mistake and split the string                          
         skinfolds_measurements = measurements_str.replace(",", " ").split()
 
         if validate_skinfolds_measurements(skinfolds_measurements):
@@ -278,15 +277,18 @@ def validate_skinfolds_measurements(values):
     all string values into floats. It ensures each value is either an integer or a float.
     Checks for entries that are spaces and dots without numbers.
     """
-    # Pattern to identify entries that are purely non-numeric (e.g., empty, just dots or commas)
-    #Source: https://www.geeksforgeeks.org/write-regular-expressions/
-    #https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+    # Pattern to identify entries that are purely non-numeric
+    # (e.g., empty, just dots or commas)
+    # Source: https://www.geeksforgeeks.org/write-regular-expressions/
+    # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/
+    # Regular_Expressions/Cheatsheet
     non_numeric_pattern = r"^\s*[\.,]*\s*$"
 
     # Ensure each entry is not just dots or empty spaces
     if any(re.match(non_numeric_pattern, value) for value in values):
-        print(Fore.RED + "Invalid input. Each measurement must be a numerical value, "
-        "entries containing only spaces or dots are not accepted.\n")
+        print(Fore.RED + "Invalid input. Each measurement must be a 
+        "numerical value, entries containing only spaces or dots "
+        "are not accepted.\n")
         return False
 
     # Filter out any entries that are just spaces or empty
@@ -352,7 +354,7 @@ def store_data(date,
 def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     """
     Calculates body fat percent using Jackson/Pollock 7-Site Caliper Method.
-    Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php
+    Source:https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php
     """
     print(Fore.CYAN + "Calculating your body fat percent...\n")
     skinfolds_sum = sum(
@@ -504,8 +506,7 @@ def main():
     """
     while True:
 
-        print(Style.BRIGHT +
-              Fore.YELLOW + "Welcome to Body Fat Percent Calculator\n")
+        print(Fore.YELLOW + "Welcome to Body Fat Percent Calculator\n")
         print("In order to use the Calculator, please use "
               "a skinfold caliper\n")
 
