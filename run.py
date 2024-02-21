@@ -319,7 +319,7 @@ def validate_skinfolds_measurements(values):
     )
     return False    
 
-    # Check if we still have exactly 7 values after filtering
+    # Check if we still have exactly 7 values
     if len(numeric_values) != 7:
         print(
             Fore.RED +

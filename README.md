@@ -156,6 +156,7 @@ Enter 'm', 'M', 'f' or 'F' | The gender is accepted, the program displays a mess
 |Enter only spaces into the input field | Entering only spaces results in the program displaying an error message: 'Exactly 7 values of skinfold measurements required, you provided 0. Please try again.'  The user is offered to attempt enterign skinfolds again.| Pass |
 |Enter only commas into the input field | Entering only commas results in the program displaying an error message: 'Exactly 7 values of skinfold measurements required, you provided 0. Please try again.'  The user is offered to attempt enterign skinfolds again.| Pass |
 |Enter coma values only (e.g. ...  .. .. ..) | Entering only dots results in the program displaying an error message: 'Invalid input. Each measurement must be a numerical value, entries containing only dots are not accepted'.  The user is offered to attempt enterign skinfolds again. | Pass |
+|Enter skinfold measurements with negative values (e.g. -25,11 34 55 55 -6 8) | The program displays an error message: 'Invalid data: measurements cannot be negative. Please enter positive values only'. The user is offered to attempt enterign skinfolds again. | Pass |
 |Enter valid skinfold measurements in the correct format (e.g., '10.5 5 12 11.7 25 20 33') | The measurements are accepted, the program displays a message 'Data is valid!'and proceeds | Pass |
 |Testign recommendations display |
 |Essential Fat Category |
@@ -210,6 +211,8 @@ To align with web standards and ensure accessibility compliance Python code was 
 
 #### Solved Bugs
 
+##### ***Issue 1***
+
 After adding Colorama module Python package to the code to be able to change text color and improve user experience, the project was successfully running locally in Gitpod. However after the deployment the following error was identified: 'ModuleNotFoundError'.
 
 ```Traceback (most recent call last):
@@ -218,10 +221,55 @@ After adding Colorama module Python package to the code to be able to change tex
 ModuleNotFoundError: No module named 'colorama'
 ```
 
-**Solution**
+##### ***Solution***
 1. Colorama was reinstalled using command: ```pip3 install colorama```, following instructions from [Stack Overflow](https://stackoverflow.com/questions/9846683/how-to-install-colorama-in-python).
 
 2. Requirements file was updated by adding ```colorama==0.4.6``` to requirements.txt file utilising instructions from [CopyProgramming](https://copyprogramming.com/howto/heroku-python-failed-to-detect-app-matching-buildpack).
+
+##### ***Issue 2***
+Upon validation, it was noticed that when commas and dots are submitted for skinfold measurements input, the error message displayed is misleading:
+
+![Validation Error Issue 1](media/validation-message-first-issue.jpeg)
+
+##### ***Solution***
+
+In order to improve the validation process, the following changes were introduced to the code:
+
+- A regular expression pattern was introduced to identify entries consisting solely of non-numeric characters (spaces, dots, or commas) to reject them as invalid.
+
+   ```
+   # Pattern to identify entries that are purely non-numeric (e.g., empty, just dots or commas)
+   non_numeric_pattern = r"^\s*[\.,]*\s*$"
+
+    # Ensure each entry is not just dots or empty spaces
+   if any(re.match(non_numeric_pattern, value) for value in values):
+      print(Fore.RED + "Invalid input. Each measurement must be a numerical value, "
+      "entries containing only spaces or dots are not accepted.\n")
+      return False
+   ```     
+
+This helped to improve the validation process. However, it was noticed that multiple dots and numbers with spaces were identified as a single entry:
+
+![Validation Error Issue ](media/validation-message-second-issue.jpeg)
+
+- Therefore, the order of the validation functionality was changed to first check for non-numeric character entries before proceeding to count the number of inputs or convert them to float values, and checking the number of inputs at the end of the function: 
+
+![Skinfold Measurements Validation Function Improvement.jpeg](media/skinfold-measurements-function-validation-improvement.jpeg)
+
+- Furthermore, the input separation method was changed from splitting the input string strictly based on commas:
+
+   ```
+   skinfolds_measurements = measurements_str.split(",")
+   ```
+
+To replacing commas with spaces and then splitting the input based on spaces so multiple numbers with spaces were no longer identified as single entries:
+
+    ```
+    skinfolds_measurements = measurements_str.replace(",", " ").split()
+    ```
+
+This helped to significantly improve the validation process.
+
 
 ### Remaining Bugs
 No bugs remaining
