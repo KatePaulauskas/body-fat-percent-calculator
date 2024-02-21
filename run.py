@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import datetime
 import re
-from colorama import init, Fore
+from colorama import init, Fore, Back, Style
 
 # Initialize Colorama
 init()
@@ -26,8 +26,8 @@ def get_measurements_date():
     until the data is valid.
     """
     while True:
-        date_measurements_taken = input(
-            Fore.BLUE +
+        date_measurements_taken = input(Style.BRIGHT +
+            Fore.CYAN +
             "Enter the date measurements were taken in the following format: "
             "DD/MM/YYYY:\n"
         )
@@ -77,7 +77,7 @@ def get_user_name():
     until the name is valid.
     """
     while True:
-        user_name = input(Fore.BLUE + "Enter your name here:\n")
+        user_name = input(Fore.CYAN + "Enter your name here:\n")
 
         if validate_user_name(user_name):
             print(Fore.GREEN + "Name is valid!\n")
@@ -113,7 +113,7 @@ def get_user_gender():
     """
     while True:
         user_gender = input(
-            Fore.BLUE
+            Fore.CYAN
             + "Enter your gender in the following format: M or F:\n").upper()
 
         if user_gender == "M" or user_gender == "F":
@@ -131,7 +131,7 @@ def get_user_age():
     age from the user via the terminal until the age is valid.
     """
     while True:
-        user_age = input(Fore.BLUE
+        user_age = input(Fore.CYAN
                          + "Enter your age in numerical "
                          "format (e.g. 30):\n")
 
@@ -156,7 +156,7 @@ def get_user_weight():
     until the weight is valid.
     """
     while True:
-        user_weight = input(Fore.BLUE
+        user_weight = input(Fore.CYAN
                             + "Enter your weight in "
                             "kgs (e.g. 80.5):\n")
 
@@ -183,15 +183,15 @@ def offer_procedure_instructions():
     Offers instructions on how the measurements should be taken.
     """
     while True:
-        print(Fore.MAGENTA + "Would you like to view the information "
+        print(Fore.YELLOW + "Would you like to view the information "
               "regarding the necessary equipment and procedures for "
               "conducting the measurements?\n")
         procedure_and_equipment = input(
-            Fore.BLUE + "Enter your response here: Y or N.\n"
+            Fore.CYAN + "Enter your response here: Y or N.\n"
         ).upper()
 
         if procedure_and_equipment == "Y":
-            print(Fore.CYAN + "Equipment: Skinfold caliper.\n"
+            print(Fore.MAGENTA + "Equipment: Skinfold caliper.\n"
                   "Procedure:\n")
             print("Measurements are taken on the right side of body. "
                   "Caliper needs to be perpendicular to the site "
@@ -204,7 +204,7 @@ def offer_procedure_instructions():
                   "accurate readings.\n")
             break
         elif procedure_and_equipment == "N":
-            print(Fore.BLUE + "No problem, we will skip to the next part.\n")
+            print(Fore.CYAN + "No problem, we will skip to the next part.\n")
             break
         else:
             print(Fore.RED + "Invalid input.\n")
@@ -215,13 +215,13 @@ def offer_measurements_instructions():
     Offers instructions for taking the required skinfold measurements.
     """
     while True:
-        print(Fore.MAGENTA + "Would you like to review the instructions for "
+        print(Fore.YELLOW + "Would you like to review the instructions for "
               "taking the required skinfold measurements?\n")
-        instructions = input(Fore.BLUE
+        instructions = input(Fore.CYAN
             + "Enter your response here: Y or N.\n").upper()
 
         if instructions == "Y":
-            print(Fore.CYAN + "Instructions:\n")
+            print(Fore.MAGENTA + "Instructions:\n")
             print("Tricep: vertical fold at the midpoint of the posterior "
                   "side of tricep between shoulder and elbow with arm "
                   "relaxed at the side.\n"
@@ -238,7 +238,7 @@ def offer_measurements_instructions():
                   "between the patella and top of thigh.\n")
             break
         elif instructions == "N":
-            print(Fore.BLUE + "No problem, we will skip to the next part.\n")
+            print(Fore.CYAN + "No problem, we will skip to the next part.\n")
             break
         else:
             print(Fore.RED + "Invalid input.\n")
@@ -251,7 +251,7 @@ def get_skinfold_measurements():
     """
     while True:
         print(
-            Fore.MAGENTA +
+            Fore.YELLOW +
             "Enter skinfold measurements in the following order: "
             "tricep, chest, subscapular, midaxillary, abdominal, "
             "suprailiac, thigh.\n"
@@ -260,7 +260,7 @@ def get_skinfold_measurements():
             "Example: 10.5 5 12 11.7 25 20 33\n"
         )
 
-        measurements_str = input(Fore.BLUE
+        measurements_str = input(Fore.CYAN
                                  + "Enter your skinfold measurements "
                                  "here in mm:\n")
         ##Replace comas with spaces, if entered by mistake and split the string                          
@@ -316,8 +316,8 @@ def validate_skinfolds_measurements(values):
             Fore.RED +
             "Invalid data: measurements cannot be negative. "
             "Please enter positive values only.\n"
-    )
-    return False    
+        )
+        return False    
 
     # Check if we still have exactly 7 values
     if len(numeric_values) != 7:
@@ -339,7 +339,7 @@ def store_data(date,
     """
     Stores the validated data in the Google sheet 'measurements'.
     """
-    print(Fore.MAGENTA + "Updating measurements worksheet...\n")
+    print(Fore.YELLOW + "Updating measurements worksheet...\n")
     measurements_sheet = SHEET.worksheet("measurements")
     data_row = [
         date, user_name, user_gender, user_age, user_weight
@@ -354,7 +354,7 @@ def calculate_body_fat_percent(user_age, user_gender, skinfold_measurements):
     Calculates body fat percent using Jackson/Pollock 7-Site Caliper Method.
     Source: https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php
     """
-    print(Fore.BLUE + "Calculating your body fat percent...\n")
+    print(Fore.CYAN + "Calculating your body fat percent...\n")
     skinfolds_sum = sum(
         [float(measurement) for measurement in skinfold_measurements])
 
@@ -375,7 +375,7 @@ def calculate_body_fat_weight(user_weight, user_body_fat_percent):
     Calculates the body fat weight based on the provided weight and
     calculated body fat percent.
     """
-    print(Fore.BLUE + "Calculating your body fat weight...\n")
+    print(Fore.CYAN + "Calculating your body fat weight...\n")
     body_fat_weight = (user_weight * user_body_fat_percent) / 100
     return round(body_fat_weight, 2)
 
@@ -385,7 +385,7 @@ def calculate_lean_body_weight(user_weight, user_body_fat_weight):
     Calculates the user's lean body mass based on their weight
     and body fat weight.
     """
-    print(Fore.BLUE + "Calculating your lean body mass...\n")
+    print(Fore.CYAN + "Calculating your lean body mass...\n")
     lean_body_weight = user_weight - user_body_fat_weight
     return round(lean_body_weight, 2)
 
@@ -397,7 +397,7 @@ def store_results(user_body_fat_percent,
     Stores calculated results for the user's body fat percent, body fat weight,
     and lean body mass in the Google sheet 'results'.
     """
-    print(Fore.MAGENTA + "Updating results worksheet...\n")
+    print(Fore.YELLOW + "Updating results worksheet...\n")
     results_sheet = SHEET.worksheet("results")
     data_row = [user_body_fat_percent,
                 user_body_fat_weight,
@@ -412,7 +412,7 @@ def display_recommendations(user_gender, user_body_fat_percent):
     Provides explanation of the result and further recommendations based on the
     user's fitness levels of the body
     """
-    print(Fore.MAGENTA + "Summary and Recommendations:\n")
+    print(Fore.YELLOW + "Summary and Recommendations:\n")
 
     if (user_gender == "M" and 2 <= user_body_fat_percent <= 5) or (
          user_gender == "F" and 10 <= user_body_fat_percent <= 13):
@@ -484,7 +484,7 @@ def run_again():
     """
     while True:
         run_again_input = input(
-            Fore.BLUE
+            Fore.CYAN
             + "Would you like to run the program again? "
             "Enter Y or N:\n").upper()
 
@@ -504,7 +504,8 @@ def main():
     """
     while True:
 
-        print(Fore.MAGENTA + "Welcome to Body Fat Percent Calculator\n")
+        print(Style.BRIGHT +
+              Fore.YELLOW + "Welcome to Body Fat Percent Calculator\n")
         print("In order to use the Calculator, please use "
               "a skinfold caliper\n")
 
@@ -525,15 +526,15 @@ def main():
             skinfold_measurements)
         user_body_fat_percent = calculate_body_fat_percent(
             user_age, user_gender, skinfold_measurements)
-        print(Fore.CYAN
+        print(Fore.MAGENTA
               + f"Your body fat percent is {user_body_fat_percent} %\n")
         user_body_fat_weight = calculate_body_fat_weight(
             user_weight, user_body_fat_percent)
-        print(Fore.CYAN
+        print(Fore.MAGENTA
               + f"Your body fat weight is {user_body_fat_weight} kg\n")
         user_lean_body_weight = calculate_lean_body_weight(
             user_weight, user_body_fat_weight)
-        print(Fore.CYAN
+        print(Fore.MAGENTA
               + f"Your lean body mass is {user_lean_body_weight} kg\n")
         user_results = store_results(
             user_body_fat_percent, user_body_fat_weight, user_lean_body_weight)
@@ -550,8 +551,7 @@ def main():
         """
         if not run_program_again:
             break
-    print(
-        Fore.MAGENTA
+    print(Fore.YELLOW
         + "The program has ended. Thank you for using the Body Fat Percent "
         "Calculator.")
 

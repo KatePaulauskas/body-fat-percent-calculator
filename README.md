@@ -248,7 +248,7 @@ In order to improve the validation process, the following changes were introduce
       return False
    ```     
 
-This helped to improve the validation process. However, it was noticed that multiple dots and numbers with spaces were identified as a single entry:
+    This helped to improve the validation process. However, it was noticed that multiple dots and numbers with spaces were identified as a single entry:
 
 ![Validation Error Issue ](media/validation-message-second-issue.jpeg)
 
@@ -262,7 +262,7 @@ This helped to improve the validation process. However, it was noticed that mult
    skinfolds_measurements = measurements_str.split(",")
    ```
 
-To replacing commas with spaces and then splitting the input based on spaces so multiple numbers with spaces were no longer identified as single entries:
+    To replacing commas with spaces and then splitting the input based on spaces so multiple numbers with spaces were no longer identified as single entries:
 
     ```
     skinfolds_measurements = measurements_str.replace(",", " ").split()
