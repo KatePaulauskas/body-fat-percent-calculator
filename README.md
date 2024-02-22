@@ -179,6 +179,93 @@ Opting out acknowledges the user's choice and proceeds to the next step.
 
 ![User Does Not Wish To View Skinfold MEasurements Instructions](media/no-to-view-skinfold-measurements-instructions.jpeg)
 
+***10. Collecting Skinfold Measurements***
+
+The user is invited to input their skinfold measurements, requiring a sequence of 7 numbers representing different body parts. These numbers can include fractional parts to ensure precision.
+
+![](media/skinfolds-measurements-input.jpeg)
+
+The application ensures the submission contains exactly 7 valid numeric values, each below 80 mm. No dots, spaces, or negative values are allowed:
+
+![Skinfolds Input Validation part 1](media/skinfolds-input-validation-1.jpeg)
+![Skinfolds Input Validation part 2](media/skinfolds-input-validation-2.jpeg)
+![Skinfolds Input Validation part 3](media/skinfold-input-validation-3.jpeg)
+
+Upon providing the measurements in the required format and quantity, the user receives a confirmation "Data is valid!" confirming that the measurements are within expected parameters.
+
+![Skinfold Measurements Success Message](media/skinfold-measurements-success-message.jpeg)
+
+***11. Calculating and Storing Results***
+
+After collecting necessary data, the application securely stores it in a Google Sheet for record-keeping and notifies the user about successful storage. Then it calculates and displays the user's body fat percentage, body fat weight, and lean body mass one by one. These results are also then securely stored in a Google Sheet for further analysis and user gets notified about that.
+
+![calculate-results-update-worksheet](media/calculate-results-update-worksheet.jpeg)
+
+***12. Displaying Recommendations and Summary***
+
+Based on the calculated body fat percentage and considering the user's gender, the user's body composition is classified into categories, and the application provides a short personalized summary of the user's body composition. It also offers health and fitness recommendations tailored to the user's specific category.
+
+**Essential Fat Category**
+
+- Male: 2% to 5% body fat
+- Female: 10% to 13% body fat
+
+![Essential Fat Category](media/essential-fat-category.jpeg)
+
+**Athletic Built Category**
+
+- Male: 5% to 13% body fat
+- Female: 13% to 20% body fat
+
+![Athletic Built Category](media/athletic-built-category.jpeg)
+
+**Fitness category**
+
+- Male: 13% to 17% body fat
+- Female: 20% to 24% body fat
+
+![Fitness Category](media/fitness-category.jpeg)
+
+**Above but Acceptable category**
+
+- Male: 17% to 25% body fat
+- Female: 24% to 31% body fat
+
+![Above but Acceptable Category](media/above-but-acceptable-category.jpeg)
+
+**Obese Category**
+
+- Male: above 25% body fat
+- Female: above 31% body fat
+
+![Obese Category](media/obese-categoty.jpeg)
+
+**Below Essential fat levels warning**
+
+If a user falls below the essential fat level, a warning is displayed with further recommendations.
+
+- Male: less than 2% body fat
+- Female: less than 10% body fat
+
+![Below Essential Category](media/below-essential%20fat%20level.jpeg)
+
+
+***13. Option to Run Program Again***
+
+After delivering the results and recommendations, the program inquires if the user wants to perform another calculation. This feature facilitates continuous use without the need to manually restart the application. The user is prompted to decide whether to repeat the calculation process with new data or conclude their current session by responding with "Y" for yes or "N" for no.
+
+If the input is neither "Y" nor "N", an error message is displayed, and the user is guided to provide a valid response.
+
+![Run Program Again Validation](media/run-program-again-validation.jpeg)
+
+If the user chooses not to run the program again, their choice is acknowledged, and the program ends.
+
+![Do Not Run Program Again](media/no-to-restart-program.jpeg)
+
+If the user opts to run the program again, it restarts without issuing a specific success message, offering a seamless experience for conducting another analysis.
+
+![ Run Program Again](media/yes-to-restart-program.jpeg)
+
 
 ### Future Features
 
@@ -190,14 +277,6 @@ Opting out acknowledges the user's choice and proceeds to the next step.
 
 
 ## Testing
-
-Here's a proofread version of your text:
-
-Numerous tests were performed to ensure the proper functionality of the Body Fat Percent Calculator application.
-
-The application was tested in various browsers: Chrome, Microsoft Edge, Firefox, and Brave, and no issues were identified with its functionality or loading time.
-
-The project was tested on multiple desktop devices with different screen dimensions, and no issues were identified.
 
 ### Testing behaviour
 
