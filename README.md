@@ -543,6 +543,8 @@ The deployed project link can be found at the following URL: [Bosy Fat Percent C
 
 4. To validate Python code [PEP8 Python Validator](https://pep8ci.herokuapp.com), developed by Code Institute was used.
 
+5. Pattern to identify entries that are purely non-numeric to validate skinfold measurements input values was developed based on the following sources: [GeeksforGeek](https://www.geeksforgeeks.org/write-regular-expressions/) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet).
+
 #### Content
 1. The body fat percent calculation was done using Jackson/Pollock 7-Site Caliper Method as described on [T.S.K.V. Spartacus](https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php)
 
