@@ -82,6 +82,36 @@ User's data and calculated results are stored in a Google Sheets document, organ
 
 - `colorama`: Enhances the terminal interface by adding color to text, improving user experience by making the interface more engaging and easier to navigate. It plays a significant role in user interaction without directly affecting the data model or storage.
 
+### `gspread` Set Up
+
+To set up `gspread` Google Sheet was created for the Body Fat Percent Calculator and relevant APIs were activated to ensure access to the the data in the sheet with Python following thesteps below.
+
+**- Creating a Google Sheet:**
+1. Log in to Google account and navigate to Google Sheets.
+2. Create a new spreadsheet by clicking on the "+" sign or selecting "Blank" from the template gallery.
+3. Rename the spreadsheet to 'body-fat-percent-calculator'.
+4. Create two separate worksheets within the spreadsheet by clicking on the "+" sign at the bottom of the screen.
+5. Rename the first worksheet to “measurements” and the second worksheet to “results”.
+6. In the "measurements" sheet, create columns for each measurement (Date, Name, Gender, Age, Weight, Tricep, Chest, Subscapular, Midaxillary, Abdominal, Suprailiac, and Thigh).
+7. In the “results” sheet, create columns for the results of the calculations (Body Fat Percentage, Body Fat Weight, Lean Body Mass).
+8. Enter sample data into each sheet to populate the columns and provide a basis for analysis. Ensure that the data is organised in clean rows and columns for easy access and manipulation.
+9. Save the changes made to the Google Sheet.
+
+**- Activate API to access the data in the spreadsheet with Python code:**
+
+1. Go to the Google Cloud Platform (GCP) website and sign in with Google account.
+2. Create a new project by clicking on the dropdown menu at the top of the page, selecting "New Project", naming the project “Body-fat-percent-calculator”, and clicking on "Create".
+3. Once the project is created, navigate to the "APIs & Services" dashboard and click on "Library" in the left-hand menu.
+4. Search for "Google Drive API" and "Google Sheets API", and enable both APIs for the project.
+5. Go to the "Credentials" section in the left-hand menu and click on "Create credentials". Select "Service account" as the credential type.
+6. Fill in the required information for the service account, such as service account ID, name, and assign it the role of Project > Editor for necessary access permissions.
+7. Click on "Create" and then "Done" after reviewing the assigned roles.
+8. Click on the newly created service account, go to the "Keys" tab, and click "Add Key" > "Create new key". Choose "JSON" as the key type and click "Create". This will download the service account key as a JSON file. Save this file securely.
+9. In Gitpod workspace, load the service account key JSON file, rename it to creds.json
+11. Open creds.json, locate client-email and copy it. Open Google Spreadsheet click the share button and add client email, select “Editor” and then click "share".
+12. Add the JSON file to the gitignore file to ensure it is not committed to the GitHub repository.
+13. Install two additional dependencies into the project: `gspread` and `google-auth` to be ablet to use Google Sheets API. 
+
 ## Features
 
 ### Existing Features
