@@ -57,19 +57,6 @@ The Data Model of the Body Fat Percent Calculator is designed to efficiently org
 
 The integration of these components forms the foundation of the application's functionality, from data entry to result calculation, guaranteeing data integrity and a seamless user experience.
 
-### Data Storage
-
-User's data and calculated results are stored in a Google Sheets document, organised into two worksheets: 'measurements' and 'results'. This allows to segregate different types of data while ensuring they remain accessible and manageable. The docu,emt can be accessed [here](https://docs.google.com/spreadsheets/d/1wtBIdRfhVgiLtt7POK6Ok7haC94J2Ui8iBBVCPcYop4/edit#gid=0).
-
-- **Measurements Worksheet.** This worksheet is dedicated to storing raw user inputs. Each entry includes the date of measurement, user name, gender, age, weight, and the specific skinfold measurements. By collecting this data, the application lays the groundwork for the following body composition calculation and analysis. The design of this worksheet facilitates the tracking of individual progress over time, as users can input new measurements and compare them against their historical data.
-
-- **Results Worksheet.** After processing the user's measurements, the calculated results – body fat percentage, body fat mass, lean body mass – are stored in the 'results' worksheet. This separation of raw data from calculated results simplifies data analysis and allows for a clear overview of the user's body composition trends over time. 
-
-- **Data Privacy and Security.** Utilising Google Sheets for data storage ensures user data is protected against unauthorised access. 
-
-- **Ease of Management.** By storing data in Google Sheets, the application enables easy data management, analysis, and sharing capabilities.
-
-
 ### Python Packages Used
 
 - `gspread`: Enables the application to interact with Google Sheets, facilitating the storage and retrieval of user data and calculated results. This package is crucial for the application’s data storage model, providing a bridge between the Python application and Google's cloud storage.
@@ -82,7 +69,7 @@ User's data and calculated results are stored in a Google Sheets document, organ
 
 - `colorama`: Enhances the terminal interface by adding color to text, improving user experience by making the interface more engaging and easier to navigate. It plays a significant role in user interaction without directly affecting the data model or storage.
 
-### `gspread` Set Up
+#### `gspread` & `google-auth` Set Up
 
 To set up `gspread` Google Sheet was created for the Body Fat Percent Calculator and relevant APIs were activated to ensure access to the the data in the sheet with Python following thesteps below.
 
@@ -111,6 +98,18 @@ To set up `gspread` Google Sheet was created for the Body Fat Percent Calculator
 11. Open creds.json, locate client-email and copy it. Open Google Spreadsheet click the share button and add client email, select “Editor” and then click "share".
 12. Add the JSON file to the gitignore file to ensure it is not committed to the GitHub repository.
 13. Install two additional dependencies into the project: `gspread` and `google-auth` to be ablet to use Google Sheets API. 
+
+#### Data Storage
+
+User's data and calculated results are stored in a Google Sheets document, organised into two worksheets: 'measurements' and 'results'. This allows to segregate different types of data while ensuring they remain accessible and manageable. The docu,emt can be accessed [here](https://docs.google.com/spreadsheets/d/1wtBIdRfhVgiLtt7POK6Ok7haC94J2Ui8iBBVCPcYop4/edit#gid=0).
+
+- **Measurements Worksheet.** This worksheet is dedicated to storing raw user inputs. Each entry includes the date of measurement, user name, gender, age, weight, and the specific skinfold measurements. By collecting this data, the application lays the groundwork for the following body composition calculation and analysis. The design of this worksheet facilitates the tracking of individual progress over time, as users can input new measurements and compare them against their historical data.
+
+- **Results Worksheet.** After processing the user's measurements, the calculated results – body fat percentage, body fat mass, lean body mass – are stored in the 'results' worksheet. This separation of raw data from calculated results simplifies data analysis and allows for a clear overview of the user's body composition trends over time. 
+
+- **Data Privacy and Security.** Utilising Google Sheets for data storage ensures user data is protected against unauthorised access. 
+
+- **Ease of Management.** By storing data in Google Sheets, the application enables easy data management, analysis, and sharing capabilities.
 
 ## Features
 
