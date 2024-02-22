@@ -6,7 +6,7 @@ Body Fat Percent Calculator is a Python-based application designed to calculate 
 
 The primary goal of this application is to provide users with a detailed analysis of their body composition, specifically focusing on body fat percentage, body fat weight, and lean body mass. The target audience includes fitness enthusiasts, health-conscious individuals, and anyone interested in obtaining a comprehensive understanding of their body fat composition for health or fitness planning.
 
-![Responsive Mockup]()
+![App Preview](media/application-preview.jpeg)
 
 ### Project Links
 
@@ -85,6 +85,100 @@ User's data and calculated results are stored in a Google Sheets document, organ
 ## Features
 
 ### Existing Features
+
+***1. Initialisation of Libraries and Google Sheets API***
+
+Upon starting, the application initializes necessary libraries (gspread, google.oauth2, datetime, re, colorama) and sets up Google Sheets API credentials. It automatically authenticates with Google's servers using a service account, opens a specified Google Sheet ("body-fat-percent-calculator"), and prepares the application for user interaction. This process runs in the background, and no feedback is provided to the user, apart from issues with network access.
+
+***2. Welcome Message***
+
+Once the terminal loads, the user is greeted with a welcome message and informed that a skinfold caliper needs to be used in order to use this calculator:
+
+![Welcome Message](media/welcome-message.jpeg)
+
+***3. Measurements Date Input***
+
+Next, the user is requested to input the date when measurements were taken, expecting a specific format (DD/MM/YYYY). This allows returning users to compare their measurements by date when having access to the Google Sheet.
+
+The entered data is validated to ensure it matches the required format and that text or spaces are not entered instead. It also checks if the date is within a realistic range.
+
+![Date Input Error Messages](media/date-input-error-messages.jpeg)
+
+When the date is entered in the required format, the user receives a success message: "Date is valid!"
+
+![Date Entry Success Message](media/date-entry-success-message.jpeg)
+
+***4.  User Name Input***
+
+After that, the user is requested to provide their name, which must only contain letters, hyphens, apostrophes, and spaces, and be at least 2 characters long. If the name contains digits, special characters only, unsupported characters (such as special symbols other than hyphens and apostrophes), leading space, space only, or is just one letter, the user receives an error message:
+
+![Name Input Validation](media/name-input-validation.jpeg)
+
+Upon providing a name in the required format, the user receives a success message: "Name is valid!"
+
+![Name Entry Success Message](media/name-entry-success-message.jpeg)
+
+***5. User Gender Input***
+
+Next, the user is prompted to specify their gender by entering "M" for male or "F" for female, ensuring that the application can provide more personalized feedback or calculations based on gender-specific data.
+
+The application checks the user's input against the accepted values ("M" or "F"). This validation is case-insensitive to enhance usability, accepting both uppercase and lowercase inputs. If the input deviates from these two options, the application responds with "Invalid input. Please enter 'M' for male or 'F' for female."
+
+![Gender Validation](media/gender-validation.jpeg)
+
+If the user enters "M" or "F" (regardless of case), the application confirms with "Gender is valid!" and proceeds.
+
+![Gender Success Message](media/gender-success-message.jpeg)
+
+***6. User Age Input***
+
+Next, the user is requested to input their age, which must be a positive integer within the range of 18 to 130 years. The entered age is validated to ensure it is a numeric value and falls within the acceptable age range. The validation checks that the age is not a negative number or zero, and that it is not entered as text. Relevant error messages are provided accordingly.
+
+![Age Validation.jpeg](media/age-validation.jpeg)
+
+If the age is entered in the required format, a success message displayed "Age is valid!" indicates the input meets the criteria.
+
+![Age Input Success Message](media/age-input-success-message.jpeg)
+
+***7. User Weight Input***
+
+Next the application gathers the user's weight in kilograms, supporting decimal inputs to accommodate precise measurements. The entered weight is validated to check if it is a positive decimal or integer greater than 10kg, ensuring the value is realistic and suitable for further calculations.
+
+![Weight Input Validation](media/weight-input-validation.jpeg)
+
+Upon entering weight in the required format, the user receives a success message: "Weight is valid!"
+
+![Weight Success Message](media/weight-success-message.jpeg)
+
+***8. Equipment and Procedure to conduct measurements***
+
+The application provides the user with an option to access instructions on the procedure of taking skinfold measurements and what equipment is needed.
+![procedure-equipment-instructions-proposition](media/procedure-equipment-instructions-proposition.jpeg)
+
+User is prompted to decide whether they wish to view these instructions. Choosing "Yes" displays further instructions:
+
+![User Wishes To View Procedure and Equipment Instructions](media/yes-to-view-procedure-equipment-instructions.jpeg.jpeg)
+
+Selecting "No" skips to the next step.
+
+![User Does Not Wish To View Procedure and Equipment instructions](media/no-to-view-procedure-equipment-instructions.jpeg)
+
+***9. Skinfold Measurements Instructions***
+
+Next, the user is offered the opportunity to review specific instructions on how to measure each skinfold to ensure accurate measurements are taken in the right parts of the body.
+
+![Skinfold Measurements Instructions](media/skinfold-measurements-instructions.jpeg)
+
+The user is again prompted to decide whether they wish to view these instructions with "Y" for yes or "N" for no.
+
+Opting in displays comprehensive procedural instructions and tips for taking accurate skinfold measurements.
+
+![Skinfolds Measurements Instructions](media/skinfold-measurements-instructions.jpeg)
+
+Opting out acknowledges the user's choice and proceeds to the next step.
+
+![User Does Not Wish To View Skinfold MEasurements Instructions](media/no-to-view-skinfold-measurements-instructions.jpeg)
+
 
 ### Future Features
 
