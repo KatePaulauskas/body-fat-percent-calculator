@@ -1,28 +1,36 @@
 # Body Fat Percent Calculator
 
-Body Fat Percent Calculator is a Python-based application designed to calculate a user's body fat percentage using the Jackson/Pollock 7-Site Caliper Method. The calculator provides an interactive terminal interface, guiding users through the process of entering their personal measurements, including weight, age, gender, and skinfold measurements taken with a caliper. Users are presented with a summary of the calculations, which includes body fat percentage, body fat mass, lean body mass, and recommendations based on the user's body fitness levels. Additionally, collected data and results are stored securely via Google Sheets, ensuring privacy and ease of access for future reference.
+Body Fat Percent Calculator is a Python-based application designed to calculate a user's body fat percentage using the Jackson/Pollock 7-Site Caliper Method. The calculator provides an interactive terminal interface, guiding users through the process of entering their personal measurements, including weight, age, gender, and skinfold measurements taken with a skinfold caliper. 
+
+Users are presented with a summary of the calculations, which includes body fat percentage, body fat mass, lean body mass, and recommendations based on the user's body fitness levels. 
+
+Additionally, collected data and results are stored securely via Google Sheets, ensuring privacy and ease of access for future reference.
 
 ## Goal & Target Audience
 
-The primary goal of this application is to provide users with a detailed analysis of their body composition, specifically focusing on body fat percentage, body fat weight, and lean body mass. The target audience includes fitness enthusiasts, health-conscious individuals, and anyone interested in obtaining a comprehensive understanding of their body fat composition for health or fitness planning.
+The primary goal of this application is to provide users with a detailed analysis of their body composition, specifically focusing on body fat percentage, body fat weight, and lean body mass. 
+
+The target audience includes fitness enthusiasts, health-conscious individuals, and anyone interested in obtaining a comprehensive understanding of their body fat composition for health or fitness planning.
 
 ![App Preview](media/application-preview.jpeg)
 
-### Project Links
+### Project Link
 
-[Live Site](https://body-fat-percent-calculator-5ad0ac04aebf.herokuapp.com/)
+[Live App](https://body-fat-percent-calculator-5ad0ac04aebf.herokuapp.com/)
 
 ## UX Design
 
 ### User Experience
 
-Upon starting the application, users are greeted with a clear introduction and prompted to input their details, including the date measurements were taken, name, gender, age, weight, and specific skinfold measurements. Instructions for taking accurate measurements are provided to ensure data reliability. After all inputs are validated and submitted, the application calculates and displays the user's body fat percentage, body fat weight, and lean body mass. At the end recommendations based on the user's body composition are provided.
+Upon starting the application, users are greeted with a clear introduction and prompted to input their details, including the date measurements were taken, name, gender, age, weight, and specific skinfold measurements. Instructions for taking accurate measurements are provided to ensure data reliability. 
+
+After all inputs are validated and submitted, the application calculates and displays the user's body fat percentage, body fat weight, and lean body mass. At the end recommendations based on the user's body composition are provided.
 
 ### User Stories
 
 ***First Time User:*** A new user can easily navigate through the application by following on-screen instructions to input their personal measurements and receive their body composition analysis.
 
-***Returning / Frequent User:*** Users returning to the application can input new measurements to track changes in their body composition over time and have option to skip procedure and measurements instructions.
+***Returning / Frequent User:*** Users returning to the application can input new measurements to track changes in their body composition over time and have option to skip procedure and measurements instructions. To compare measurements returning user requires to have access to the Google Sheets.
 
 ***Interested Parties:*** Health and fitness professionals can use the application to assist clients in understanding their body composition and developing personalised fitness plans.
 
@@ -32,10 +40,10 @@ The application's logic flows as follows:
 
 1. User inputs are collected through a series of prompts (date, name, gender, age, weight, skinfold measurements).
 2. Each input is validated for format and plausibility.
-3. Upon successful validation, the data is stored in a Google Sheets document in 'measurements' worksheet, ensuring user data privacy and easy access for future reference.
+3. Upon successful validation, the data is stored in a Google Sheets document in 'measurements' worksheet.
 4. The application calculates the body fat percentage, body fat weight, and lean body mass using the provided data.
 5. Results are displayed to the user.
-6. The calculated results are stored in a Google Sheets document in a woeksheet called 'results'.
+6. The calculated results are stored in a Google Sheets document in a worksheet called 'results'.
 7. Summary and personalised recommendations and presented to the user.
 8. User is given the option to run the program again or exit.
 
@@ -45,15 +53,29 @@ The application's logic flows as follows:
 
 ## Data Model
 
-The Data Model of the Body Fat Percent Calculator is designed to efficiently organize, validate, and process user inputs, calculating body fitness levels to provide results and recommendations. It integrates Python packages to offer a secure and user-friendly experience, focusing on two main components:
+The Data Model of the Body Fat Percent Calculator is designed to efficiently organise, validate, and process user inputs, calculating body fitness levels to provide results and recommendations. It integrates Python packages to offer a secure and user-friendly experience, focusing on two main components:
 
 - **Google Sheets Integration via `gspread`.** It is essential for the application's interaction with Google Sheets, where data is stored. This method offers a secure, accessible, and manageable solution for storing user inputs and calculated outcomes. This setup enhances data clarity and facilitates progress tracking over time. Cloud-based storage guarantees data backup and accessibility, ensuring privacy and convenience for users.
 
 - **Terminal Interface Enhancement with `colorama`.** It improves user interaction by utilising the `colorama` package to output colored text in the terminal, making the interface more engaging and easy to navigate. Color differentiation helps highlight application sections, error messages, and instructions, boosting readability and user engagement.
 
-- **Data Validation.** Every user input undergoes a thorough validation process for accuracy and reliability, using regular expressions and custom logic tailored to each input type. This step verifies date, name, gender, and numerical inputs against specific formats and ranges, and it is crucial for maintaining data integrity and ensuring precise calculations.
+- **Data Validation.** Every user input undergoes a thorough validation process for accuracy and reliability, using regular expressions and custom logic tailored to each input type. The followign data is verifyed: date, name, gender, and numerical inputs against specific formats and ranges, and it is crucial for maintaining data integrity and ensuring precise calculations.
 
-- **Processing and Calculation Logic.** After validation, the application employs the Jackson/Pollock 7-Site Caliper Method for calculations, enabling users to receive insightful and accurate body composition assessments.
+- **Processing and Calculation Logic.** After validation, the application employs the Jackson/Pollock 7-Site Caliper Method for calculations, enabling users to receive insightful and accurate body composition assessments:
+
+```
+Jackson/Pollock 7-Site Caliper Method formula:
+
+Male[1]	BF%=495/(1.112-(0.00043499*s)+(0.00000055*s*s)-(0.00028826*a))-450
+
+Female[2]	BF%=495/(1.097-(0.00046971*s)+(0.00000056*s*s)-(0.00012828*a))-450
+Variables	s = sum of 7 skinfold mm
+a = age
+
+[1] Jackson, A. S., & Pollock, M. L. (1978). Generalized equations for predicting body density of men. British journal of nutrition, 40(03), 497-504.
+
+[2] Jackson, A. S., Pollock, M. L., & Ward, A. N. N. (1979). Generalized equations for predicting body density of women. Medicine and science in sports and exercise, 12(3), 175-181.
+```
 
 The integration of these components forms the foundation of the application's functionality, from data entry to result calculation, guaranteeing data integrity and a seamless user experience.
 
@@ -101,7 +123,7 @@ To set up `gspread` Google Sheet was created for the Body Fat Percent Calculator
 
 #### Data Storage
 
-User's data and calculated results are stored in a Google Sheets document, organised into two worksheets: 'measurements' and 'results'. This allows to segregate different types of data while ensuring they remain accessible and manageable. The docu,emt can be accessed [here](https://docs.google.com/spreadsheets/d/1wtBIdRfhVgiLtt7POK6Ok7haC94J2Ui8iBBVCPcYop4/edit#gid=0).
+User's data and calculated results are stored in a Google Sheets document, organised into two worksheets: 'measurements' and 'results'. This allows to segregate different types of data while ensuring they remain accessible and manageable. The document can be accessed [here](https://docs.google.com/spreadsheets/d/1wtBIdRfhVgiLtt7POK6Ok7haC94J2Ui8iBBVCPcYop4/edit#gid=0).
 
 - **Measurements Worksheet.** This worksheet is dedicated to storing raw user inputs. Each entry includes the date of measurement, user name, gender, age, weight, and the specific skinfold measurements. By collecting this data, the application lays the groundwork for the following body composition calculation and analysis. The design of this worksheet facilitates the tracking of individual progress over time, as users can input new measurements and compare them against their historical data.
 
@@ -226,13 +248,41 @@ Upon providing the measurements in the required format and quantity, the user re
 
 ***11. Calculating and Storing Results***
 
-After collecting necessary data, the application securely stores it in a Google Sheet for record-keeping and notifies the user about successful storage. Then it calculates and displays the user's body fat percentage, body fat weight, and lean body mass one by one. These results are also then securely stored in a Google Sheet for further analysis and user gets notified about that.
+After collecting necessary data, the application securely stores it in a Google Sheet for record-keeping and notifies the user about successful storage. Then it calculates the user's **body fat percentage**:
+
+   ```
+      if user_gender == "M":
+         body_fat_percent = 495 / (1.112 - (0.00043499 * skinfolds_sum) +
+                                    (0.00000055 * skinfolds_sum ** 2) -
+                                    (0.00028826 * user_age)) - 450
+      else:
+         body_fat_percent = 495 / (1.097 - (0.00046971 * skinfolds_sum) +
+                                    (0.00000056 * skinfolds_sum ** 2) -
+                                    (0.00012828 * user_age)) - 450
+   ```
+
+
+**Body fat weight:**
+
+   ```
+      body_fat_weight = (user_weight * user_body_fat_percent) / 100
+      return round(body_fat_weight, 2)
+   ```
+
+**Lean body mass:**
+
+   ```
+      lean_body_weight = user_weight - user_body_fat_weight
+      return round(lean_body_weight, 2)
+   ```    
+
+These results are displayed one by one and then securely stored in a Google Sheet for further analysis. The user gets notified about results beign stored.
 
 ![calculate-results-update-worksheet](media/calculate-results-update-worksheet.jpeg)
 
 ***12. Displaying Recommendations and Summary***
 
-Based on the calculated body fat percentage and considering the user's gender, the user's body composition is classified into categories, and the application provides a short personalized summary of the user's body composition. It also offers health and fitness recommendations tailored to the user's specific category.
+Based on the calculated body fat percentage and considering the user's gender, the user's body composition is classified into categories, and the application provides a short personalised summary of the user's body composition. It also offers health and fitness recommendations tailored to the user's specific category.
 
 **Essential Fat Category**
 
@@ -482,8 +532,6 @@ This helped to significantly improve the validation process.
 ### Remaining Bugs
 No bugs remaining
 
-### Validator Testing
-
 ## Deployment
 
 The calculator app is hosted on Heroku, a container-based cloud platform designed for app development, deployment, and management. It was deployed following the steps below.
@@ -545,7 +593,11 @@ The deployed project link can be found at the following URL: [Bosy Fat Percent C
 5. Pattern to identify entries that are purely non-numeric to validate skinfold measurements input values was developed based on the following sources: [GeeksforGeek](https://www.geeksforgeeks.org/write-regular-expressions/) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet).
 
 #### Content
-1. The body fat percent calculation was done using Jackson/Pollock 7-Site Caliper Method as described on [T.S.K.V. Spartacus](https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php)
+1. The body fat percent calculation was done using Jackson/Pollock 7-Site Caliper Method as described on [T.S.K.V. Spartacus](https://tskvspartacus.nl/tools/7-point-fat-percentage-calculator.php). It further refers to the following articles:
+
+    - Jackson, A. S., & Pollock, M. L. (1978). Generalized equations for predicting body density of men. British journal of nutrition, 40(03), 497-504.
+
+    - Jackson, A. S., Pollock, M. L., & Ward, A. N. N. (1979). Generalized equations for predicting body density of women. Medicine and science in sports and exercise, 12(3), 175-181.
 
 2. Equipment and procedure instructions, fitness levels breakdown and recomendations were adopted the following sources: [TrainerMetrics](https://www.trainermetrics.com/fitness-assessment-calculations/body-fat-7-site-skinfold-jackson-pollock/) and [Thecalculator.co](https://www.thecalculator.co/health/Body-Fat-Percentage-7-Site-Skinfold-Calculator-1115.html).
 
@@ -564,4 +616,3 @@ The deployed project link can be found at the following URL: [Bosy Fat Percent C
 2. To resolve the issue with Colorama, it was reinstalled using command: ```pip3 install colorama```, following instructions from [Stack Overflow](https://stackoverflow.com/questions/9846683/how-to-install-colorama-in-python).
 
 3. To further address the issues with Colorama, the requirements file was updated utilising instructions from [CopyProgramming](https://copyprogramming.com/howto/heroku-python-failed-to-detect-app-matching-buildpack)
-
